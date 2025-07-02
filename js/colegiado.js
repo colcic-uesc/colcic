@@ -152,11 +152,10 @@ const composicao = [
 ]
 
 const coordenacao = [
-	{ name: "Hélder Conceição Almeida", role: "Coordenador" },
-	{ name: "Trícia Souto Santos", role: "Vice-Coordenadora" },
+	{ name: "Marta Magda Dornelles", role: "Coordenadora" },
+	{ name: "Jorge Lima de Oliveira Filho", role: "Vice-Coordenador" },
 	{ name: "Rita de Cássia Souza Dias da Silva", role: "Secretária" },
 	{ name: "Ramon Santos Costa", role: "Técnico de Informática" },
-	{ name: "Flávio Victor Souza de Melo", role: "Técnico de Informática" },
 ]
 
 const tblColegiado = document.querySelector("#tableColegiado .content")
