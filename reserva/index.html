@@ -23,6 +23,7 @@
 		<link rel="stylesheet" type="text/css" href="../css/footer.css" />
 		<link rel="stylesheet" type="text/css" href="../css/tooltip.css" />
 		<link rel="stylesheet" type="text/css" href="../css/goToTop.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
 		<title>COLCIC | Colegiado de Ciência da Computação</title>
 		<meta
@@ -79,14 +80,14 @@
 			}
 
 			#reservaForm .form-group {
-				width: 49%; /* Define a largura para criar duas colunas */
+				width: 49%;
 				display: flex;
 				flex-direction: column;
 				gap: 0.5rem; /* Espaço entre o label e o input */
 			}
 
 			#reservaForm .form-group.full-width {
-				width: 100%; /* Para campos que ocupam a largura total */
+				width: 100%; 
 			}
 			
 			#reservaForm input,
@@ -99,6 +100,38 @@
 				width: 100%;
 				margin-top: 1rem;
 			}
+
+            summary {
+                cursor: pointer;
+                outline: none;
+                padding: 0px 0px 15px 0px;
+            }
+
+            summary p {
+                display: inline; 
+                font-size: 1.1em; 
+                margin: 0;
+            }
+            summary::-webkit-details-marker {
+                display: none;
+            }
+
+            summary::marker {
+                display: none;
+            }
+
+            .arrow-indicator {
+                font-size: 1em; 
+                color: #000000;
+            }
+
+            details > summary::before {
+                content: ""; 
+            }
+
+            details > summary {
+                list-style: none; 
+            }
 		</style>
     </head>
 
@@ -256,6 +289,15 @@
                 <div class="mainWrapper">
                     <div class="mainContent">
                         <h1>Solicitação de Reserva de Laboratório</h1>
+                        <details>
+                            <summary>
+                                <p><b>Quem Pode Solicitar Reserva de Laboratório? </b><i class="fas fa-chevron-down arrow-indicator"></i></p>
+                            </summary>
+                            <p><b>Órgãos de Administração Setorial:</b> Departamentos e Colegiados de Curso.
+                            <b>Órgãos de Administração Superior:</b> CONSAD CONSEP, CONSU e Reitoria
+                            <b>Órgãos de Apoio Administrativo:</b> Secretaria deRegistro de Diplomas, ASCOM, EDITUS, PROJUS e UDO.
+                            <b>Órgãos Suplementares:</b> Biblioteca Central, Prefeitura do Campos, Gráfica Universitária, Hospital Veterinário, CEDOC, SECREGE e Rádio e TV Universitária.</p>
+                        </details>
                         <form id="reservaForm" novalidate>
                             <div class="form-group">
                                 <label for="email">Email do professor *</label>
@@ -311,6 +353,8 @@
                                 <label for="softwares">Softwares que serão utilizados </label>
                                 <textarea id="softwares" name="softwares" rows="3" required></textarea>
                             </div>
+                                
+                            <p>Todos os campos com (*) são obrigatórios.</p>
 
                             <div class="button-wrapper">
                                 <button type="submit" class="PrimaryButton">Solicitar reserva</button>
