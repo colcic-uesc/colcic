@@ -350,7 +350,7 @@
                             </div>
 
                             <div class="form-group full-width">
-                                <label for="softwares">Softwares que serão utilizados </label>
+                                <label for="softwares">Softwares/Recursos que serão utilizados *</label>
                                 <textarea id="softwares" name="softwares" rows="3" required></textarea>
                             </div>
                                 
@@ -500,7 +500,7 @@
             const numAlunos = Number(form.numAlunos.value);
             const softwares = form.softwares.value.trim();
 
-            if (!email || !nome || !setor || !dataInicio || !dataFim || !inicio || !fim || !disciplina || !numAlunos) {
+            if (!email || !nome || !setor || !dataInicio || !dataFim || !inicio || !fim || !disciplina || !numAlunos || !softwares) {
                 alert('Por favor, preencha todos os campos obrigatórios.');
                 return;
             }
