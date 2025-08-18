@@ -100,38 +100,6 @@
 				width: 100%;
 				margin-top: 1rem;
 			}
-
-            summary {
-                cursor: pointer;
-                outline: none;
-                padding: 0px 0px 15px 0px;
-            }
-
-            summary p {
-                display: inline; 
-                font-size: 1.1em; 
-                margin: 0;
-            }
-            summary::-webkit-details-marker {
-                display: none;
-            }
-
-            summary::marker {
-                display: none;
-            }
-
-            .arrow-indicator {
-                font-size: 1em; 
-                color: #000000;
-            }
-
-            details > summary::before {
-                content: ""; 
-            }
-
-            details > summary {
-                list-style: none; 
-            }
 		</style>
     </head>
 
@@ -287,64 +255,65 @@
         <section>
             <div class="MaxWidthWrapper">
                 <div class="mainWrapper">
+                    <div class="mainContentPhoto">
+                            <img src="../assets/contact.png" alt="" />
+                                <p><b>Quem Pode Solicitar Reserva de Laboratório? </b></p>
+    
+                                <p><b>Órgãos de Administração Setorial:</b> Departamentos e Colegiados de Curso.
+                                <b>Órgãos de Administração Superior:</b> CONSAD CONSEP, CONSU e Reitoria
+                                <b>Órgãos de Apoio Administrativo:</b> Secretaria deRegistro de Diplomas, ASCOM, EDITUS, PROJUS e UDO.
+                                <b>Órgãos Suplementares:</b> Biblioteca Central, Prefeitura do Campos, Gráfica Universitária, Hospital Veterinário, CEDOC, SECREGE e Rádio e TV Universitária.</p>
+					</div>
                     <div class="mainContent">
                         <h1>Solicitação de Reserva de Laboratório</h1>
-                        <details>
-                            <summary>
-                                <p><b>Quem Pode Solicitar Reserva de Laboratório? </b><i class="fas fa-chevron-down arrow-indicator"></i></p>
-                            </summary>
-                            <p><b>Órgãos de Administração Setorial:</b> Departamentos e Colegiados de Curso.
-                            <b>Órgãos de Administração Superior:</b> CONSAD CONSEP, CONSU e Reitoria
-                            <b>Órgãos de Apoio Administrativo:</b> Secretaria deRegistro de Diplomas, ASCOM, EDITUS, PROJUS e UDO.
-                            <b>Órgãos Suplementares:</b> Biblioteca Central, Prefeitura do Campos, Gráfica Universitária, Hospital Veterinário, CEDOC, SECREGE e Rádio e TV Universitária.</p>
-                        </details>
+
                         <form id="reservaForm" novalidate>
-                            <div class="form-group">
+                            <div class="form-group full-width">
                                 <label for="email">Email do professor *</label>
                                 <input type="email" id="email" name="email" required />
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group full-width">
                                 <label for="nome">Nome do docente responsável *</label>
                                 <input type="text" id="nome" name="nome" required />
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group full-width">
                                 <label for="setor">Setor / Lotação *</label>
                                 <input type="text" id="setor" name="setor" required />
                             </div>
 
-							<div class="form-group">
+							<div class="form-group full-width">
                                 <label for="disciplina">Disciplina / Conteúdo *</label>
                                 <input type="text" id="disciplina" name="disciplina" required />
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group full-width">
                                 <label for="dataInicio">Data de início *</label>
                                 <input type="date" id="dataInicio" name="dataInicio" required />
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group full-width">
                                 <label for="dataFim">Data de término *</label>
                                 <input type="date" id="dataFim" name="dataFim" required />
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group full-width">
                                 <label for="inicio">Horário início *</label>
                                 <input type="time" id="inicio" name="inicio" required />
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group full-width">
                                 <label for="fim">Horário término *</label>
                                 <input type="time" id="fim" name="fim" required />
                             </div>
                             
-                            <div class="form-group">
+                            <div class="form-group full-width">
                                 <label for="numAlunos">Número de alunos *</label>
                                 <input type="number" id="numAlunos" name="numAlunos" min="1" required />
                             </div>
 
-                            <div id="matriculaDiv" class="form-group" style="display:none;">
+                            <div id="matriculaDiv" class="form-group full-width" style="display:none;">
                                 <label for="matricula">Matrícula UESC (obrigatória se uso até depois das 16h) *</label>
                                 <input type="text" id="matricula" name="matricula" />
                             </div>
