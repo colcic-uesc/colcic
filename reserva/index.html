@@ -133,6 +133,41 @@
                     gap: 0; 
                 }
             }
+
+            .mainContentPhoto p {
+                margin-bottom: 1rem;
+            }
+
+            /* Estiliza a seção lateral como um "card" branco */
+            .mainContentPhoto p:not(.no-style) {
+                line-height: 1.6;
+                color: #4A4A4A;
+                margin-bottom: 0.0rem;
+                /*background-color: white;*/
+                padding: 10px;
+                border-radius: 8px;
+            }
+
+            /* Estilo opcional para o título (o parágrafo com a classe .no-style) */
+            .mainContentPhoto p.no-style {
+                color: #4A4A4A; 
+                font-weight: medium;
+                margin-bottom: 1.5rem; 
+            }
+
+            .mainContentPhoto img {
+                margin-bottom: 1.0rem; 
+            }
+
+            .mainContentPhoto p {
+                line-height: 1.6;
+                color: #4A4A4A;
+                margin-bottom: 1rem;
+            }
+
+            .mainContentPhoto p:last-child {
+                margin-bottom: 0; 
+            }
 		</style>
     </head>
 
@@ -289,14 +324,8 @@
             <div class="MaxWidthWrapper">
                 <div class="mainWrapper">
                     <div class="mainContentPhoto">
-                            <img src="../assets/contact.png" alt="" />
-                                <p><b>Quem Pode Solicitar Reserva de Laboratório? </b></p>
-    
-                                <p><b>Órgãos de Administração Setorial:</b> Departamentos e Colegiados de Curso.
-                                <b>Órgãos de Administração Superior:</b> CONSAD CONSEP, CONSU e Reitoria
-                                <b>Órgãos de Apoio Administrativo:</b> Secretaria deRegistro de Diplomas, ASCOM, EDITUS, PROJUS e UDO.
-                                <b>Órgãos Suplementares:</b> Biblioteca Central, Prefeitura do Campos, Gráfica Universitária, Hospital Veterinário, CEDOC, SECREGE e Rádio e TV Universitária.</p>
-					</div>
+                        <img src="../assets/contact.png" alt="" />
+                    </div>
                     <div class="mainContent">
                         <h1>Solicitação de Reserva de Laboratório</h1>
 
@@ -311,14 +340,16 @@
                                 <input type="text" id="nome" name="nome" required />
                             </div>
 
-                            <div class="form-group full-width">
-                                <label for="setor">Setor / Lotação *</label>
-                                <input type="text" id="setor" name="setor" required />
-                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="setor">Setor / Lotação *</label>
+                                    <input type="text" id="setor" name="setor" required />
+                                </div>
 
-							<div class="form-group full-width">
-                                <label for="disciplina">Disciplina / Conteúdo *</label>
-                                <input type="text" id="disciplina" name="disciplina" required />
+                                <div class="form-group">
+                                    <label for="disciplina">Disciplina / Conteúdo *</label>
+                                    <input type="text" id="disciplina" name="disciplina" required />
+                                </div>
                             </div>
 
                             <div class="form-row">
@@ -377,51 +408,36 @@
 				<div class="MaxWidthWrapper">
 					<div class="mainWrapper noGap">
 						<div class="contact">
-							<h2>Encontre-nos</h2>
+							<h2>Quem Pode Solicitar Reserva de Laboratório?</h2>
 							<div class="contactWrapper">
 								<div class="contactItem">
 									<div class="contactIcon">
 										<iconify-icon
-											icon="heroicons:map-pin-solid"
+											icon="bi:check-circle-fill"
 										></iconify-icon>
 									</div>
 
 									<div class="contactInfo">
-										<div class="title">Endereço</div>
+										<div class="title">Órgãos de Administração Setorial</div>
 										<div class="content">
 											<p>
-												Pavilhão de Ciências Exatas e
-												Tecnológicas
+												Departamentos e Colegiados de Curso.
 											</p>
-											<p>UESC, Ilhéus-Ba</p>
 										</div>
 									</div>
 								</div>
 								<div class="contactItem">
 									<div class="contactIcon">
 										<iconify-icon
-											icon="fa-solid:envelope"
+											icon="bi:check-circle-fill"
 										></iconify-icon>
 									</div>
 
 									<div class="contactInfo">
-										<div class="title">E-mail</div>
+										<div class="title">Órgãos de Administração Superior </div>
 										<div class="content">
 											<div>
-												<a href="mailto:colcic@uesc.br"
-													>colcic@uesc.br</a
-												>
-												<span>(Colegiado)</span>
-											</div>
-											<div>
-												<a
-													href="mailto:colciclab@uesc.br"
-													>colciclab@uesc.br</a
-												>
-												<span
-													>(Funcionamento de
-													Laboratórios)</span
-												>
+												<p>CONSAD CONSEP, CONSU e Reitoria.</p>
 											</div>
 										</div>
 									</div>
@@ -430,24 +446,32 @@
 								<div class="contactItem">
 									<div class="contactIcon">
 										<iconify-icon
-											icon="ant-design:phone-filled"
+											icon="bi:check-circle-fill"
 										></iconify-icon>
 									</div>
 
 									<div class="contactInfo">
-										<div class="title">Telefone</div>
+										<div class="title">Órgãos de Apoio Administrativo </div>
 										<div class="content">
 											<div>
-												<a href="tel:7336805110"
-													>(73) 3680-5110</a
-												>
-												<span>(Secretária)</span>
+												<p>Secretaria de Registro de Diplomas, ASCOM, EDITUS, PROJUS e UDO.</p>
 											</div>
+										</div>
+									</div>
+								</div>
+                                <div class="contactItem">
+									<div class="contactIcon">
+										<iconify-icon
+											icon="bi:check-circle-fill"
+										></iconify-icon>
+									</div>
+
+									<div class="contactInfo">
+										<div class="title">Órgãos Suplementares </div>
+										<div class="content">
 											<div>
-												<a href="tel:7336805290"
-													>(73) 3680-5290</a
-												>
-												<span>(Laboratórios)</span>
+												<p>Biblioteca Central, Prefeitura do Campos, Gráfica Universitária, Hospital Veterinário,</p>
+                                                <p>CEDOC, SECREGE e Rádio e TV Universitária.</p>
 											</div>
 										</div>
 									</div>
