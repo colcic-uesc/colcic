@@ -73,101 +73,65 @@
 		<style>
 			#reservaForm {
 				display: flex;
-				flex-wrap: wrap;
-				justify-content: space-between;
-				row-gap: 1.5rem; /* Espaçamento vertical entre as linhas de campos */
-				flex-direction: row !important;
+				flex-direction: column;
+				row-gap: 2rem;
 			}
-
-			#reservaForm .form-group {
-				width: 49%;
+			.reserva-block {
+				border: 1.5px solid #ccc;
+				padding: 1.5rem;
+				border-radius: 12px;
+				background: #f9f9f9;
+			}
+			.reserva-block h3 {
+				margin-bottom: 1rem;
+				font-size: 1.2rem;
+				font-weight: bold;
+			}
+			.form-group {
 				display: flex;
 				flex-direction: column;
-				gap: 0.5rem; /* Espaço entre o label e o input */
+				margin-bottom: 1rem;
 			}
-
-			#reservaForm .form-group.full-width {
-				width: 100%; 
+			.form-group label {
+				margin-bottom: 0.4rem;
+				font-weight: 600;
 			}
-			
-			#reservaForm input,
-			#reservaForm textarea {
-				width: 100%;
+			.form-group input,
+			.form-group textarea {
+				padding: 8px;
+				border-radius: 8px;
+				border: 1px solid #ccc;
 				box-sizing: border-box;
 			}
-
-			#reservaForm .button-wrapper {
-				width: 100%;
-				margin-top: 1rem;
+			.form-row {
+				display: flex;
+				gap: 1rem;
 			}
-
-            .form-row {
-                display: flex; 
-                gap: 10px; 
-                width: 100%; 
-            }
-
-            .form-row .form-group {
-                flex: 1; 
-                width: 100%; 
-            }
-
-            .form-group {
-                display: flex;
-                flex-direction: column;
-            }
-
-            .form-group label {
-                margin-bottom: 0.5rem;
-            }
-
-            .form-group input {
-                width: 100%; 
-                padding: 8px; 
-                box-sizing: border-box;
-            }
-
-            @media (max-width: 768px) {
-                .form-row {
-                    flex-direction: column; 
-                    gap: 0; 
-                }
-            }
-
-            .mainContentPhoto p {
-                margin-bottom: 1rem;
-            }
-
-            /* Estiliza a seção lateral como um "card" branco */
-            .mainContentPhoto p:not(.no-style) {
-                line-height: 1.6;
-                color: #4A4A4A;
-                margin-bottom: 0.0rem;
-                /*background-color: white;*/
-                padding: 10px;
-                border-radius: 8px;
-            }
-
-            /* Estilo opcional para o título (o parágrafo com a classe .no-style) */
-            .mainContentPhoto p.no-style {
-                color: #4A4A4A; 
-                font-weight: medium;
-                margin-bottom: 1.5rem; 
-            }
-
-            .mainContentPhoto img {
-                margin-bottom: 1.0rem; 
-            }
-
-            .mainContentPhoto p {
-                line-height: 1.6;
-                color: #4A4A4A;
-                margin-bottom: 1rem;
-            }
-
-            .mainContentPhoto p:last-child {
-                margin-bottom: 0; 
-            }
+			.form-row .form-group {
+				flex: 1;
+			}
+			.button-wrapper {
+				text-align: right;
+			}
+			.addBtn {
+				background: #4e73ff;
+				color: white;
+				padding: 0.6rem 1rem;
+				border: none;
+				border-radius: 8px;
+				cursor: pointer;
+				margin-bottom: 1rem;
+			}
+			.removeBtn {
+				background: #dc3545;
+				color: white;
+				padding: 0.3rem 0.6rem;
+				border: none;
+				border-radius: 6px;
+				cursor: pointer;
+				float: right;
+				margin-top: -2rem;
+			}
 		</style>
     </head>
 
@@ -329,68 +293,82 @@
                     <div class="mainContent">
                         <h1>Solicitação de Reserva de Laboratório</h1>
 
+                        
+                        <div class="form-group">
+                            <label>Email do professor *</label>
+                            <input type="email" name="email" required />
+                        </div>
+
+
+
                         <form id="reservaForm" novalidate>
-                            <div class="form-group full-width">
-                                <label for="email">Email do professor *</label>
-                                <input type="email" id="email" name="email" required />
+                     
+                            <div id="disciplinasContainer">
+                                <!-- Bloco de reserva (um conjunto de campos) -->
+                                <div class="reserva-block">
+									<button type="button" class="removeBtn" style="display:none;">Remover</button>
+                                    <h3>Reserva 1</h3>
+
+                                    
+
+                                    <div class="form-group">
+                                        <label>Nome do docente responsável *</label>
+                                        <input type="text" name="nome" required />
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label>Setor / Lotação *</label>
+                                            <input type="text" name="setor" required />
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Disciplina / Conteúdo *</label>
+                                            <input type="text" name="disciplina" required />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label>Data de início *</label>
+                                            <input type="date" name="dataInicio" required />
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Data de término *</label>
+                                            <input type="date" name="dataFim" required />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label>Horário início *</label>
+                                            <input type="time" name="inicio" required />
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Horário término *</label>
+                                            <input type="time" name="fim" required />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label>Número de alunos *</label>
+                                            <input type="number" name="numAlunos" min="1" required />
+                                        </div>
+                                        <div class="form-group matriculaDiv" style="display:none;">
+                                            <label>Matrícula UESC (Para o uso após as 16h) *</label>
+                                            <input type="text" name="matricula"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group full-width">
+                                        <label>Softwares/Recursos que serão utilizados *</label>
+                                        <textarea name="softwares" rows="3" required></textarea>
+                                    </div>
+                                </div>
                             </div>
 
-                            <div class="form-group full-width">
-                                <label for="nome">Nome do docente responsável *</label>
-                                <input type="text" id="nome" name="nome" required />
-                            </div>
+                            <button type="button" class="addBtn">+ Adicionar nova disciplina</button>
 
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="setor">Setor / Lotação *</label>
-                                    <input type="text" id="setor" name="setor" required />
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="disciplina">Disciplina / Conteúdo *</label>
-                                    <input type="text" id="disciplina" name="disciplina" required />
-                                </div>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="dataInicio">Data de início *</label>
-                                    <input type="date" id="dataInicio" name="dataInicio" required />
-                                </div>
-                                <div class="form-group">
-                                    <label for="dataFim">Data de término *</label>
-                                    <input type="date" id="dataFim" name="dataFim" required />
-                                </div>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="inicio">Horário início *</label>
-                                    <input type="time" id="inicio" name="inicio" required />
-                                </div>
-                                <div class="form-group">
-                                    <label for="fim">Horário término *</label>
-                                    <input type="time" id="fim" name="fim" required />
-                                </div>
-                            </div>
-                            
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="numAlunos">Número de alunos *</label>
-                                    <input type="number" id="numAlunos" name="numAlunos" min="1" required />
-                                </div>
-
-                                <div id="matriculaDiv" class="form-group" style="display:none;">
-                                    <label for="matricula">Matrícula UESC (Para o uso após as 16h) *</label>
-                                    <input type="text" id="matricula" name="matricula" />
-                                </div>
-                            </div>
-
-                            <div class="form-group full-width">
-                                <label for="softwares">Softwares/Recursos que serão utilizados *</label>
-                                <textarea id="softwares" name="softwares" rows="3" required></textarea>
-                            </div>
-                                
                             <p>Todos os campos com (*) são obrigatórios.</p>
 
                             <div class="button-wrapper">
@@ -568,9 +546,8 @@
         emailjs.init('TVAOox61F2YW-ONKJ');
 
         const form = document.getElementById('reservaForm');
-        const matriculaDiv = document.getElementById('matriculaDiv');
-        const matriculaInput = document.getElementById('matricula');
-        const fimInput = document.getElementById('fim');
+        const container = document.getElementById('disciplinasContainer');
+        const addBtn = document.querySelector('.addBtn');
         const msgFeedback = document.getElementById('msgFeedback');
 
         function timeToMinutes(t) {
@@ -578,102 +555,157 @@
             return h * 60 + m;
         }
 
-        fimInput.addEventListener('change', () => {
-            if (!fimInput.value) {
-                matriculaDiv.style.display = 'none';
-                matriculaInput.required = false;
-                return;
-            }
-            const fimMin = timeToMinutes(fimInput.value);
-            if (fimMin > 16 * 60) {
-                matriculaDiv.style.display = 'flex';
-                matriculaInput.required = true;
-            } else {
-                matriculaDiv.style.display = 'none';
-                matriculaInput.required = false;
-            }
-        });
-
         function isDateAtLeastDaysAhead(dateStr, daysAhead) {
             const inputDate = new Date(dateStr);
             const now = new Date();
-            now.setHours(0, 0, 0, 0);
+            now.setHours(0,0,0,0);
             const minDate = new Date(now);
             minDate.setDate(minDate.getDate() + daysAhead);
             return inputDate >= minDate;
         }
 
+        // adicionar novo bloco
+        addBtn.addEventListener('click', () => {
+            const blocks = container.querySelectorAll('.reserva-block');
+            const newBlock = blocks[0].cloneNode(true);
+
+            // limpar valores
+            newBlock.querySelectorAll('input, textarea').forEach(el => {
+                el.value = '';
+            });
+
+            newBlock.querySelector('h3').innerText = `Reserva ${blocks.length+1}`;
+            newBlock.querySelector('.removeBtn').style.display = 'inline-block';
+
+            container.appendChild(newBlock);
+
+            attachEvents(newBlock);
+        });
+
+        // anexar eventos (horário e botão remover)
+        function attachEvents(block){
+            const fimInput = block.querySelector('input[name="fim"]');
+            const matriculaDiv = block.querySelector('.matriculaDiv');
+            const matriculaInput = block.querySelector('input[name="matricula"]');
+            const removeBtn = block.querySelector('.removeBtn');
+
+            fimInput.addEventListener('change', () => {
+                if (!fimInput.value) {
+                    matriculaDiv.style.display = 'none';
+                    matriculaInput.required = false;
+                    return;
+                }
+                const fimMin = timeToMinutes(fimInput.value);
+                if (fimMin > 16*60) {
+                    matriculaDiv.style.display = 'block';
+                    matriculaInput.required = true;
+                } else {
+                    matriculaDiv.style.display = 'none';
+                    matriculaInput.required = false;
+                }
+            });
+
+            removeBtn.addEventListener('click', () => {
+                block.remove();
+            });
+        }
+
+        // já anexar no bloco inicial
+        attachEvents(container.querySelector('.reserva-block'));
+
+        // envio do formulário
         form.addEventListener('submit', (e) => {
             e.preventDefault();
 
-            const email = form.email.value.trim();
-            const nome = form.nome.value.trim();
-            const setor = form.setor.value.trim();
-            const dataInicio = form.dataInicio.value;
-            const dataFim = form.dataFim.value;
-            const inicio = form.inicio.value;
-            const fim = form.fim.value;
-            const matricula = form.matricula.value.trim();
-            const disciplina = form.disciplina.value.trim();
-            const numAlunos = Number(form.numAlunos.value);
-            const softwares = form.softwares.value.trim();
-
-            if (!email || !nome || !setor || !dataInicio || !dataFim || !inicio || !fim || !disciplina || !numAlunos || !softwares) {
-                alert('Por favor, preencha todos os campos obrigatórios.');
+            const email = document.querySelector('input[name="email"]').value.trim();
+            if(!email){
+                alert('Preencha o campo de email.');
                 return;
             }
 
-            const fimMin = timeToMinutes(fim);
-            if (fimMin > 16 * 60 && !matricula) {
-                alert('Por favor, preencha a matrícula pois o uso ultrapassa as 16h.');
-                return;
-            }
+            const blocks = container.querySelectorAll('.reserva-block');
+            let emailBody = '';
 
-            if (new Date(dataFim) < new Date(dataInicio)) {
-                alert('A data de término deve ser igual ou posterior à data de início.');
-                return;
-            }
+            for (let i = 0; i < blocks.length; i++) {
+                const block = blocks[i];
 
-            if (!isDateAtLeastDaysAhead(dataInicio, 5)) {
-                alert('A solicitação deve ser feita com pelo menos 5 dias de antecedência da data de início.');
-                return;
-            }
+                const nome = block.querySelector('input[name="nome"]').value.trim();
+                const setor = block.querySelector('input[name="setor"]').value.trim();
+                const disciplina = block.querySelector('input[name="disciplina"]').value.trim();
+                const dataInicio = block.querySelector('input[name="dataInicio"]').value;
+                const dataFim = block.querySelector('input[name="dataFim"]').value;
+                const inicio = block.querySelector('input[name="inicio"]').value;
+                const fim = block.querySelector('input[name="fim"]').value;
+                const numAlunos = block.querySelector('input[name="numAlunos"]').value;
+                const matricula = block.querySelector('input[name="matricula"]').value.trim();
+                const softwares = block.querySelector('textarea[name="softwares"]').value.trim();
 
-            const templateParams = {
+                // validações
+                if (!nome || !setor || !disciplina || !dataInicio || !dataFim || !inicio || !fim || !numAlunos || !softwares) {
+                    alert('Preencha todos os campos obrigatórios em todas as reservas.');
+                    return;
+                }
+                if (new Date(dataFim) < new Date(dataInicio)) {
+                    alert('Data de término deve ser >= data de início.');
+                    return;
+                }
+                if (!isDateAtLeastDaysAhead(dataInicio, 4)) {
+                    alert('A solicitação deve ser feita com 5 dias de antecedência.');
+                    return;
+                }
+                const fimMin = timeToMinutes(fim);
+                if (fimMin > 16*60 && !matricula) {
+                    alert('Preencha matrícula pois ultrapassa 16h.');
+                    return;
+                }
+
+                // montar corpo do email
+                emailBody += `
+        Reserva ${i+1}:
+        Professor: ${nome} (${email})
+        Setor/Lotação: ${setor}
+        Data: ${dataInicio} até ${dataFim}
+        Horário: ${inicio} até ${fim}
+        Matrícula: ${matricula || 'N/A'}
+        Disciplina / Conteúdo: ${disciplina}
+        Número de alunos: ${numAlunos}
+        Softwares: ${softwares}
+
+        -----------------------------
+        `;
+            }
+            
+            // array de promessas para enviar múltiplos emails
+            const promises = [];
+
+            //envia para o colegiado cópia do conteúdo formulário
+            promises.push(
+            emailjs.send('service_8bten8g', 'template_rm6jmnk', {
+                to_email: 'bsoliveira.cic@uesc.br',
+                message: emailBody
+            }));
+
+            //envia para o professor cópia do conteúdo formulário
+            promises.push(
+            emailjs.send('service_8bten8g', 'template_rm6jmnk', {
                 to_email: email,
-                email_professor: email,
-                nome_docente: nome,
-                setor_lotacao: setor,
-                data_inicio: dataInicio,
-                data_fim: dataFim,
-                horario_inicio: inicio,
-                horario_fim: fim,
-                matricula_uesc: matricula,
-                disciplina_conteudo: disciplina,
-                numero_alunos: numAlunos,
-                softwares_uso: softwares
-            };
+                message: emailBody
+            }));
 
-            emailjs.send('service_8bten8g', 'template_rm6jmnk', templateParams)
-                .then(() => {
-                    return emailjs.send('service_8bten8g', 'template_rm6jmnk', {
-                        ...templateParams,
-                        to_email: 'bsoliveira.cic@uesc.br'
-                    });
-                })
-                .then(() => {
-                    return emailjs.send('service_8bten8g', 'template_kfaypeb', { to_email: email });
-                })
-                .then(() => {
-                    msgFeedback.style.color = 'green';
-                    msgFeedback.innerText = 'Solicitação enviada! Uma cópia foi enviada para bsoliveira.cic@uesc.br. O professor foi notificado sobre a análise.';
-                    form.reset();
-                })
-                .catch((error) => {
-                    msgFeedback.style.color = 'red';
-                    msgFeedback.innerText = 'Erro ao enviar a solicitação. Tente novamente mais tarde.';
-                    console.error('Erro EmailJS:', error);
-                });
+            //envia para o professor email de confirmação/análise
+            promises.push(
+            emailjs.send('service_8bten8g', 'template_kfaypeb', {
+                to_email: email,
+                //message: `Olá ${email.split('@')[0]},\n\nSeu pedido de reserva foi recebido e está sendo analisado.\n\nResumo:\n${emailBody}`
+            }));
+
+            Promise.all(promises).then(() => {
+            msgFeedback.style.color = 'green';
+            msgFeedback.innerText = 'Solicitação(ões) de reserva(s) enviada(s) com sucesso!';
+            }).catch(() => {
+            msgFeedback.style.color = 'red';
+            msgFeedback.innerText = 'Erro ao enviar. Tente novamente.';
+            });
         });
     </script>
 
