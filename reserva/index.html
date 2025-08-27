@@ -76,17 +76,6 @@
 				flex-direction: column;
 				row-gap: 2rem;
 			}
-			.reserva-block {
-				border: 1.5px solid #ccc;
-				padding: 1.5rem;
-				border-radius: 12px;
-				background: #f9f9f9;
-			}
-			.reserva-block h3 {
-				margin-bottom: 1rem;
-				font-size: 1.2rem;
-				font-weight: bold;
-			}
 			.form-group {
 				display: flex;
 				flex-direction: column;
@@ -122,16 +111,57 @@
 				cursor: pointer;
 				margin-bottom: 1rem;
 			}
-			.removeBtn {
-				background: #dc3545;
-				color: white;
-				padding: 0.3rem 0.6rem;
-				border: none;
-				border-radius: 6px;
-				cursor: pointer;
-				float: right;
-				margin-top: -2rem;
-			}
+
+            /* Nova regra para o contêiner do título e botão */
+            .reserva-header {
+                display: flex; /* Transforma o contêiner em flexível */
+                justify-content: space-between; /* Empurra o h3 para a esquerda e o botão para a direita */
+                align-items: center; /* Centraliza os dois itens verticalmente */
+                margin-bottom: 1rem; /* Mantenha o espaçamento entre o cabeçalho e os campos */
+            }
+
+            /* Estilos para o título */
+            .reserva-header h3 {
+                font-size: 1.2rem;
+                font-weight: bold;
+                margin: 0; /* Remova todas as margens para que o flexbox as controle */
+            }
+
+            /* Estilos para o botão (simples e sem position: absolute) */
+            .removeBtn {
+                background: #dc3545;
+                color: white;
+                border: none;
+                border-radius: 6px;
+                cursor: pointer;
+                font-size: 1.1em; /* Tamanho do ícone, ajuste se precisar */
+                padding: 0.4rem 0.8rem !important;
+                display: flex;
+                align-items: center;
+                width: auto;
+                gap: 0.5rem;
+                width: fit-content !important;
+            }
+
+            /* O .reserva-block precisa continuar com position: relative */
+            .reserva-block {
+                position: relative;
+                border: 1.5px solid #ccc;
+                padding: 1.5rem;
+                border-radius: 12px;
+                background: #f9f9f9;
+            }
+
+            .removeBtn span {
+                font-size: 0.9rem;
+                font-weight: bold;
+                color: white;
+            }
+
+            .removeBtn i {
+                color: white;
+            }
+
 		</style>
     </head>
 
@@ -306,10 +336,13 @@
                             <div id="disciplinasContainer">
                                 <!-- Bloco de reserva (um conjunto de campos) -->
                                 <div class="reserva-block">
-									<button type="button" class="removeBtn" style="display:none;">Remover</button>
-                                    <h3>Reserva 1</h3>
-
-                                    
+                                    <div class="reserva-header">
+                                        <h3>Reserva 1</h3>
+                                        <button type="button" class="removeBtn" style="display:none;">
+                                             <i class="fa-solid fa-trash-can"></i>
+                                             <span>Remover</span>
+                                        </button>
+                                    </div>
 
                                     <div class="form-group">
                                         <label>Nome do docente responsável *</label>
@@ -669,7 +702,7 @@
                 // montar corpo do email
                 emailBody += `
         Reserva ${i+1}:
-        Professor: ${nome} (${email})
+        Professor: ${nome}
         Setor/Lotação: ${setor}
         Data: ${dataInicio} até ${dataFim}
         Horário: ${inicio} até ${fim}
