@@ -134,3 +134,137 @@
 		padding: 0;
 	}
 }
+
+#reservaForm {
+	display: flex;
+	flex-direction: column;
+	gap: 0.8rem;
+}
+
+form-group {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 1rem;
+}
+
+.form-group label {
+	margin-bottom: 0.4rem;
+	font-weight: 600;
+}
+			
+.form-group input,
+.form-group textarea {
+	padding: 8px;
+	border-radius: 8px;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+}
+			
+.form-row {
+	display: flex;
+	gap: 1rem;
+}
+			
+.form-row .form-group {
+	flex: 1;
+}
+			
+.button-wrapper {
+	text-align: right;
+}
+
+.addBtn {
+	background: #4e73ff;
+	color: white;
+	padding: 0.6rem 1rem;
+	border: none;
+	border-radius: 8px;
+	cursor: pointer;
+	margin-bottom: 1rem;
+}
+
+/* Nova regra para o contêiner do título e botão */
+.reserva-header {
+    display: flex; /* Transforma o contêiner em flexível */
+    justify-content: space-between; /* Empurra o h3 para a esquerda e o botão para a direita */
+    align-items: center; /* Centraliza os dois itens verticalmente */
+    margin-bottom: 1rem; /* Mantenha o espaçamento entre o cabeçalho e os campos */
+}
+
+/* Estilos para o título */
+.reserva-header h3 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0; /* Remova todas as margens para que o flexbox as controle */
+}
+
+/* Estilos para o botão (simples e sem position: absolute) */
+.removeBtn {
+    background: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em; /* Tamanho do ícone, ajuste se precisar */
+    padding: 0.4rem 0.8rem;
+    display: flex;
+    align-items: center;
+    width: auto;
+    gap: 0.5rem;
+    width: fit-content;
+}
+
+/* O .reserva-block precisa continuar com position: relative */
+.reserva-block {
+    position: relative;
+    border: 1.5px solid #ccc;
+    padding: 1.5rem;
+    border-radius: 12px;
+	background: #f9f9f9;
+    margin-bottom: 1rem;
+            }
+
+.removeBtn span {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: white;
+}
+
+.removeBtn i {
+    color: white;
+}
+
+.reserva-section {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    margin-bottom: 1rem;
+    background: #fff;
+}
+
+.reserva-section legend {
+    font-weight: bold;
+    padding: 0 0.5rem;
+}
+
+/* cor do título principal */
+.contact h2 {
+  color: #ffffff; /* azul escuro */
+}
+
+/* cor do texto dos títulos de cada item */
+.contact .title {
+  color: #ffffff; /* azul */
+  font-weight: bold;
+}
+
+/* cor do texto da descrição */
+.contact .content p {
+  color: #ffffff; /* cinza escuro */
+}
+
+/* cor dos ícones */
+.contact .contactIcon iconify-icon {
+  color: #ffffff; /* azul mais forte */
+  font-size: 1.5rem; /* opcional: aumentar tamanho */
+}

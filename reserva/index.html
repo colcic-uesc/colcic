@@ -135,12 +135,12 @@
                 border-radius: 6px;
                 cursor: pointer;
                 font-size: 1.1em; /* Tamanho do ícone, ajuste se precisar */
-                padding: 0.4rem 0.8rem !important;
+                padding: 0.4rem 0.8rem;
                 display: flex;
                 align-items: center;
                 width: auto;
                 gap: 0.5rem;
-                width: fit-content !important;
+                width: fit-content;
             }
 
             /* O .reserva-block precisa continuar com position: relative */
@@ -161,6 +161,19 @@
 
             .removeBtn i {
                 color: white;
+            }
+
+            .reserva-section {
+                border: 1px solid #ccc;
+                border-radius: 8px;
+                padding: 1rem 1.2rem;
+                margin-bottom: 1rem;
+                background: #fff;
+            }
+
+            .reserva-section legend {
+                font-weight: bold;
+                padding: 0 0.5rem;
             }
 
 		</style>
@@ -315,12 +328,77 @@
     </header>
 
     <main>
+        <section variant>
+            <div class="MaxWidthWrapper">
+                <div class="mainWrapper">
+                    
+                    <div class="contact">
+                        <h2>Quem Pode Solicitar Reserva de Laboratório?</h2>
+                        <div class="contactWrapper">
+                            
+                            <div class="contactItem">
+                                <div class="contactIcon">
+                                    <iconify-icon icon="bi:check-circle-fill"></iconify-icon>
+                                </div>
+                                <div class="contactInfo">
+                                    <div class="title">Órgãos de Administração Setorial</div>
+                                    <div class="content">
+                                        <p>Departamentos e Colegiados de Curso.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="contactItem">
+                                <div class="contactIcon">
+                                    <iconify-icon icon="bi:check-circle-fill"></iconify-icon>
+                                </div>
+                                <div class="contactInfo">
+                                    <div class="title">Órgãos de Administração Superior</div>
+                                    <div class="content">
+                                        <p>CONSAD, CONSEP, CONSU e Reitoria.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="contactItem">
+                                <div class="contactIcon">
+                                    <iconify-icon icon="bi:check-circle-fill"></iconify-icon>
+                                </div>
+                                <div class="contactInfo">
+                                    <div class="title">Órgãos de Apoio Administrativo</div>
+                                    <div class="content">
+                                        <p>Secretaria de Registro de Diplomas, ASCOM, EDITUS, PROJUS e UDO.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="contactItem">
+                                <div class="contactIcon">
+                                    <iconify-icon icon="bi:check-circle-fill"></iconify-icon>
+                                </div>
+                                <div class="contactInfo">
+                                    <div class="title">Órgãos Suplementares</div>
+                                    <div class="content">
+                                        <p>Biblioteca Central, Prefeitura do Campus, Gráfica Universitária, Hospital Veterinário,</p>
+                                        <p>CEDOC, SECREGE e Rádio e TV Universitária.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="mainContentPhoto">
+                        <img src="../assets/about_pics.png" alt="" />
+                    </div>
+                
+                </div>
+            </div>
+        </section>
+	
         <section>
             <div class="MaxWidthWrapper">
                 <div class="mainWrapper">
-                    <div class="mainContentPhoto">
-                        <img src="../assets/contact.png" alt="" />
-                    </div>
                     <div class="mainContent">
                         <h1>Solicitação de Reserva de Laboratório</h1>
 
@@ -331,7 +409,6 @@
                         </div>
 
 
-
                         <form id="reservaForm" novalidate>
                      
                             <div id="disciplinasContainer">
@@ -340,68 +417,105 @@
                                     <div class="reserva-header">
                                         <h3>Reserva 1</h3>
                                         <button type="button" class="removeBtn" style="display:none;">
-                                             <i class="fa-solid fa-trash-can"></i>
-                                             <span>Remover</span>
+                                            <i class="fa-solid fa-trash-can"></i>
+                                            <span>Remover</span>
                                         </button>
                                     </div>
 
-                                    <div class="form-group">
-                                        <label>Nome do docente responsável *</label>
-                                        <input type="text" name="nome" required />
-                                    </div>
+                                    <!-- Seção 1: Responsável -->
+                                    <fieldset class="reserva-section">
+                                        <legend>Informações do responsável</legend>
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label>Nome do docente responsável *</label>
+                                                <input type="text" name="nome" required />
+                                            </div>
+                                            <div class="form-group matriculaDiv">
+                                                <label>Matrícula UESC *</label>
+                                                <input type="text" name="matricula" required />
+                                            </div>
+                                        </div>
 
-                                    <div class="form-row">
-                                        <div class="form-group">
-                                            <label>Setor / Lotação *</label>
-                                            <input type="text" name="setor" required />
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label>Cargo / Função *</label>
+                                                <input type="text" name="cargo" required />
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Setor / Lotação *</label>
+                                                <input type="text" name="setor" required />
+                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label>Disciplina / Conteúdo *</label>
-                                            <input type="text" name="disciplina" required />
-                                        </div>
-                                    </div>
+                                    </fieldset>
 
-                                    <div class="form-row">
-                                        <div class="form-group">
-                                            <label>Data de início *</label>
-                                            <input type="date" name="dataInicio" required />
+                                    <!-- Seção 2: Informações da reserva -->
+                                    <fieldset class="reserva-section">
+                                        <legend>Informações da reserva</legend>
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label>Data de início *</label>
+                                                <input type="date" name="dataInicio" required />
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Data de término *</label>
+                                                <input type="date" name="dataFim" required />
+                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label>Data de término *</label>
-                                            <input type="date" name="dataFim" required />
-                                        </div>
-                                    </div>
 
-                                    <div class="form-row">
-                                        <div class="form-group">
-                                            <label>Horário início *</label>
-                                            <input type="time" name="inicio" required />
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label>Horário início *</label>
+                                                <input type="time" name="inicio" required />
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Horário término *</label>
+                                                <input type="time" name="fim" required />
+                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label>Horário término *</label>
-                                            <input type="time" name="fim" required />
-                                        </div>
-                                    </div>
 
-                                    <div class="form-row">
-                                        <div class="form-group">
-                                            <label>Número de alunos *</label>
-                                            <input type="number" name="numAlunos" min="1" required />
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label>Número de alunos *</label>
+                                                <input type="number" name="numAlunos" min="1" required />
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Disciplina / Conteúdo *</label>
+                                                <input type="text" name="disciplina" required />
+                                            </div>
                                         </div>
-                                        <div class="form-group matriculaDiv" style="display:none;">
-                                            <label>Matrícula UESC (Para o uso após as 16h) *</label>
-                                            <input type="text" name="matricula"/>
-                                        </div>
-                                    </div>
+                                    </fieldset>
 
-                                    <div class="form-group full-width">
-                                        <label>Softwares/Recursos que serão utilizados *</label>
-                                        <textarea name="softwares" rows="3" required></textarea>
-                                    </div>
+                                    <!-- Seção 3: Recursos -->
+                                    <fieldset class="reserva-section">
+                                        <legend>Informações sobre utilização de recursos</legend>
+                                        <p style="font-size: 0.9rem; color: rgba(0, 0, 0, 0.452); margin-bottom: 0.8rem;">
+                                            Observação: Solicitação de softwares deve ser feita com antecedência mínima de 15 dias, para outros recursos, 5 dias.
+                                        </p>
+
+                                        <div class="form-group full-width">
+                                            <label>Softwares/Recursos que serão utilizados *</label>
+                                            <textarea name="softwares" rows="3" required></textarea>
+                                        </div>
+
+                                        <div class="form-group full-width">
+                                            <label>Procedimentos para Instalação / Links / Comandos / Outros</label>
+                                            <textarea name="observacoes" rows="3"></textarea>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Plataforma *</label>
+                                            <select name="plataforma" required style="width: 150px;">
+                                                <option value="">Selecione...</option>
+                                                <option value="Windows">Windows</option>
+                                                <option value="Linux">Linux</option>
+                                                <option value="Ambos">Ambos</option>
+                                            </select>
+                                        </div>
+                                    </fieldset>
                                 </div>
                             </div>
 
-                            <button type="button" class="addBtn">+ Adicionar nova disciplina</button>
+                            <button type="button" class="addBtn">+ Adicionar nova solicitação</button>
 
                             <p>Todos os campos com (*) são obrigatórios.</p>
 
@@ -415,87 +529,6 @@
                 </div>
             </div>
         </section>
-
-        <section>
-				<div class="MaxWidthWrapper">
-					<div class="mainWrapper noGap">
-						<div class="contact">
-							<h2>Quem Pode Solicitar Reserva de Laboratório?</h2>
-							<div class="contactWrapper">
-								<div class="contactItem">
-									<div class="contactIcon">
-										<iconify-icon
-											icon="bi:check-circle-fill"
-										></iconify-icon>
-									</div>
-
-									<div class="contactInfo">
-										<div class="title">Órgãos de Administração Setorial</div>
-										<div class="content">
-											<p>
-												Departamentos e Colegiados de Curso.
-											</p>
-										</div>
-									</div>
-								</div>
-								<div class="contactItem">
-									<div class="contactIcon">
-										<iconify-icon
-											icon="bi:check-circle-fill"
-										></iconify-icon>
-									</div>
-
-									<div class="contactInfo">
-										<div class="title">Órgãos de Administração Superior </div>
-										<div class="content">
-											<div>
-												<p>CONSAD CONSEP, CONSU e Reitoria.</p>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="contactItem">
-									<div class="contactIcon">
-										<iconify-icon
-											icon="bi:check-circle-fill"
-										></iconify-icon>
-									</div>
-
-									<div class="contactInfo">
-										<div class="title">Órgãos de Apoio Administrativo </div>
-										<div class="content">
-											<div>
-												<p>Secretaria de Registro de Diplomas, ASCOM, EDITUS, PROJUS e UDO.</p>
-											</div>
-										</div>
-									</div>
-								</div>
-                                <div class="contactItem">
-									<div class="contactIcon">
-										<iconify-icon
-											icon="bi:check-circle-fill"
-										></iconify-icon>
-									</div>
-
-									<div class="contactInfo">
-										<div class="title">Órgãos Suplementares </div>
-										<div class="content">
-											<div>
-												<p>Biblioteca Central, Prefeitura do Campos, Gráfica Universitária, Hospital Veterinário,</p>
-                                                <p>CEDOC, SECREGE e Rádio e TV Universitária.</p>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="mainContentPhoto contactPhoto">
-							<img src="../assets/world.png" alt="" />
-						</div>
-					</div>
-				</div>
-		</section>
     </main>
 
     <footer>
@@ -618,26 +651,7 @@
 
         // anexar eventos (horário e botão remover)
         function attachEvents(block){
-            const fimInput = block.querySelector('input[name="fim"]');
-            const matriculaDiv = block.querySelector('.matriculaDiv');
-            const matriculaInput = block.querySelector('input[name="matricula"]');
             const removeBtn = block.querySelector('.removeBtn');
-
-            fimInput.addEventListener('change', () => {
-                if (!fimInput.value) {
-                    matriculaDiv.style.display = 'none';
-                    matriculaInput.required = false;
-                    return;
-                }
-                const fimMin = timeToMinutes(fimInput.value);
-                if (fimMin > 16*60) {
-                    matriculaDiv.style.display = 'block';
-                    matriculaInput.required = true;
-                } else {
-                    matriculaDiv.style.display = 'none';
-                    matriculaInput.required = false;
-                }
-            });
 
             removeBtn.addEventListener('click', () => {
                 block.remove();
@@ -675,9 +689,12 @@
                 const numAlunos = block.querySelector('input[name="numAlunos"]').value;
                 const matricula = block.querySelector('input[name="matricula"]').value.trim();
                 const softwares = block.querySelector('textarea[name="softwares"]').value.trim();
+                const observacoes = block.querySelector('textarea[name="observacoes"]').value.trim();
+                const cargo = block.querySelector('input[name="cargo"]').value.trim();
+                const plataforma = block.querySelector('select[name="plataforma"]').value.trim();
 
                 // validações
-                if (!nome || !setor || !disciplina || !dataInicio || !dataFim || !inicio || !fim || !numAlunos || !softwares) {
+                if (!nome || !setor || !disciplina || !dataInicio || !dataFim || !inicio || !fim || !numAlunos || !softwares || !cargo || !matricula || !plataforma) {
                     alert('Preencha todos os campos obrigatórios em todas as reservas.');
                     return;
                 }
@@ -687,11 +704,6 @@
                 }
                 if (!isDateAtLeastDaysAhead(dataInicio, 4)) {
                     alert('A solicitação deve ser feita com 5 dias de antecedência.');
-                    return;
-                }
-                const fimMin = timeToMinutes(fim);
-                if (fimMin > 16*60 && !matricula) {
-                    alert('Preencha matrícula pois ultrapassa 16h.');
                     return;
                 }
 
@@ -704,13 +716,16 @@
                 emailBody += `
         Reserva ${i+1}:
         Professor: ${nome}
+        Matrícula: ${matricula}
+        Cargo/Função: ${cargo}
         Setor/Lotação: ${setor}
         Data: ${dataInicio} até ${dataFim}
         Horário: ${inicio} até ${fim}
-        Matrícula: ${matricula || 'N/A'}
-        Disciplina / Conteúdo: ${disciplina}
         Número de alunos: ${numAlunos}
+        Disciplina / Conteúdo: ${disciplina}
         Softwares: ${softwares}
+        Observações: ${observacoes || 'N/A'}
+        Plataforma: ${plataforma}
 
         -----------------------------
         `;
@@ -726,18 +741,18 @@
                 message: emailBody
             }));
 
-            //envia para o professor cópia do conteúdo formulário
-            promises.push(
-            emailjs.send('service_8bten8g', 'template_rm6jmnk', {
-                to_email: email,
-                message: emailBody
-            }));
-
             //envia para o professor email de confirmação/análise
             promises.push(
             emailjs.send('service_8bten8g', 'template_kfaypeb', {
                 to_email: email,
                 //message: `Olá ${email.split('@')[0]},\n\nSeu pedido de reserva foi recebido e está sendo analisado.\n\nResumo:\n${emailBody}`
+            }));
+
+            //envia para o professor cópia do conteúdo formulário
+            promises.push(
+            emailjs.send('service_8bten8g', 'template_rm6jmnk', {
+                to_email: email,
+                message: emailBody
             }));
 
             Promise.all(promises)
