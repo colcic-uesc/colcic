@@ -8,7 +8,6 @@
     padding: 1rem;     
 }
 
-/* Estilo específico para o campo de email */
 #reservaForm .emailField input {
     background-color: #fff;       /* mesma cor de fundo */
     border: 1px solid #ccc;       /* mesma borda */
