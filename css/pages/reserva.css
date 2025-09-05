@@ -1,0 +1,246 @@
+/* --- Estilos da página de reserva --- */
+#reservaForm {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    max-width: 900px;   
+    margin: 0 auto;    
+    padding: 1rem;     
+}
+
+/* Estilo específico para o campo de email */
+#reservaForm .emailField input {
+    background-color: #fff;       /* mesma cor de fundo */
+    border: 1px solid #ccc;       /* mesma borda */
+    border-radius: 8px;           /* mesmo arredondamento dos outros campos */
+    padding: 0.5rem 0.75rem;      /* preenchimento igual */
+    font-family: 'Montserrat', sans-serif; /* mesma fonte do site */
+    font-size: 1rem;              /* tamanho igual ao restante */
+    width: 100%;                  /* ocupa toda a largura do container */
+    box-sizing: border-box;       /* para o padding não quebrar layout */
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;  
+
+}
+
+.form-group label {
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.form-row {
+    display: flex;
+    gap: 1rem;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+.button-wrapper {
+    text-align: right;
+}
+
+.addBtn {
+    background: #4e73ff;
+    color: white;
+    padding: 0.6rem 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 1rem;
+}
+
+.reserva-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.reserva-header h3 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.removeBtn {
+    background: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    padding: 0.4rem 0.8rem;
+    align-items: center;
+    gap: 0.5rem;
+	display: inline-flex;  
+    width: auto !important;
+}
+
+.reserva-block {
+    position: relative;
+    border: 1.5px solid #ccc;
+    padding: 1rem;
+    border-radius: 10px;
+    background: #f9f9f9;
+    margin-bottom: 1rem;
+}
+
+.reserva-section {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    margin-bottom: 1rem;
+    background: #fff;
+}
+
+.reserva-section legend {
+    font-weight: bold;
+    padding: 0 0.5rem;
+}
+
+
+/* --- Estilos gerais que estavam inline no HTML --- */
+
+.mainWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 100px;
+}
+
+.mainWrapper .mainContentPhoto {
+    display: block;
+    max-width: 35%;
+    width: auto;
+}
+
+.contact h2, .contact .contactWrapper .contactItem .contactInfo .title { 
+	color: #fff; 
+}
+
+.contact .contactWrapper .contactItem .contactInfo,
+.contact .contactWrapper .contactItem .contactInfo * {
+    color: #fff !important;
+}
+
+.contact h2 {
+    margin-bottom: 10px; /* espaço extra só abaixo do título */
+}
+
+.contact h2, 
+.contact .contactWrapper .contactItem .contactInfo .title {
+    font-weight: bold;
+}
+
+
+.contact .contactWrapper .contactItem .contactIcon {
+    background: rgba(170, 179, 120, 0.479) !important; /* amarelo ouro */
+}
+
+.mainWrapper .mainContentPhoto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.mainContent {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.mainContent h1 {
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: 1.5rem; 
+}
+
+.mainContent form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.mainContent form input,
+.mainContent form textarea {
+    background: none;
+    border: 1px solid #232323;
+    border-radius: 10px;
+    padding: 10px;
+}
+.mainContent form textarea {
+    resize: vertical;
+    min-height: 3em;
+}
+.mainContent form button {
+    border: none;
+    width: 100%;
+}
+.mainContent form button:hover ~ .tooltipMouse {
+    opacity: 1;
+    visibility: visible;
+}
+.contact {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.contact .contactWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.contact .contactWrapper .contactItem {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.contact .contactWrapper .contactItem .contactIcon {
+    background: var(--primary-color);
+    border-radius: 50%;
+    min-width: 50px;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.contact .contactWrapper .contactItem .contactIcon iconify-icon {
+    font-size: 2em;
+    color: #FFD700;
+}
+.contact .contactWrapper .contactItem .contactInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+/* --- Fonte Montserrat aplicada ao bloco de reserva --- */
+.reserva-texto {
+    font-family: 'Montserrat', sans-serif;
+    color: #fff; /* garante o mesmo contraste do bloco de ciência */
+}
+
+.reserva-texto h2 {
+    font-weight: 700; /* título forte */
+    font-size: 2rem;  /* mesmo tamanho do outro bloco */
+}
+
+.reserva-texto b {
+    font-weight: 600; /* igual ao destaque do outro bloco */
+}
+
+
