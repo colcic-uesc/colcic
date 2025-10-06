@@ -489,175 +489,151 @@
         </div>
     </footer>
 
-    <script
-    type="text/javascript"
-    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
-    ></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const form = document.getElementById("reservaForm");
+        const msgFeedback = document.getElementById("msgFeedback");
+        const submitButton = form.querySelector('button[type="submit"]');
+        const container = document.getElementById("disciplinasContainer");
+        const addBtn = document.querySelector(".addBtn");
 
-    <script type="text/javascript">
-        
-        emailjs.init('TVAOox61F2YW-ONKJ');
+        // --- FUNÇÕES PARA MÚLTIPLAS RESERVAS ---
 
-        const form = document.getElementById('reservaForm');
-        const container = document.getElementById('disciplinasContainer');
-        const addBtn = document.querySelector('.addBtn');
-        const msgFeedback = document.getElementById('msgFeedback');
-
-        function timeToMinutes(t) {
-            const [h, m] = t.split(':').map(Number);
-            return h * 60 + m;
-        }
-
-        function isDateAtLeastDaysAhead(dateStr, daysAhead) {
-            const inputDate = new Date(dateStr);
-            const now = new Date();
-            now.setHours(0,0,0,0);
-            const minDate = new Date(now);
-            minDate.setDate(minDate.getDate() + daysAhead);
-            return inputDate >= minDate;
-        }
-
-        // adicionar novo bloco
-        addBtn.addEventListener('click', () => {
+        const updateReservaBlocks = () => {
             const blocks = container.querySelectorAll('.reserva-block');
-            const newBlock = blocks[0].cloneNode(true);
-
-            // limpar valores
-            newBlock.querySelectorAll('input, textarea').forEach(el => {
-                el.value = '';
+            blocks.forEach((block, index) => {
+                const header = block.querySelector('h3');
+                if (header) {
+                    header.innerText = `Reserva ${index + 1}`;
+                }
+                const removeBtn = block.querySelector('.removeBtn');
+                if (removeBtn) {
+                    removeBtn.style.display = blocks.length > 1 ? 'flex' : 'none';
+                }
             });
+        };
 
-            newBlock.querySelector('h3').innerText = `Reserva ${blocks.length+1}`;
-            newBlock.querySelector('.removeBtn').style.display = 'inline-block';
+        // Evento para ADICIONAR uma nova reserva
+        addBtn.addEventListener("click", () => {
+            const firstBlock = container.querySelector('.reserva-block');
+            const newBlock = firstBlock.cloneNode(true);
 
+            // Limpa todos os campos de input, select e textarea APENAS do bloco que foi clonado.
+            const fieldsToClear = newBlock.querySelectorAll('input, select, textarea');
+            fieldsToClear.forEach(field => {
+                field.value = '';
+            });
+            
             container.appendChild(newBlock);
-
-            attachEvents(newBlock);
+            updateReservaBlocks();
         });
 
-        // anexar eventos (horário e botão remover)
-        function attachEvents(block){
-            const removeBtn = block.querySelector('.removeBtn');
+        // Evento para REMOVER uma reserva
+        container.addEventListener('click', (e) => {
+            if (e.target.closest('.removeBtn')) {
+                const blockToRemove = e.target.closest('.reserva-block');
+                blockToRemove.remove();
+                updateReservaBlocks();
+            }
+        });
 
-            removeBtn.addEventListener('click', () => {
-                block.remove();
-            });
+        // --- FUNÇÃO PARA FORMATAR A DATA ---
+        function formatarData(data) {
+            if (!data) return '';
+            const [ano, mes, dia] = data.split('-');
+            return `${dia}/${mes}/${ano}`;
         }
 
-        // já anexar no bloco inicial
-        attachEvents(container.querySelector('.reserva-block'));
-        
-        const submitButton = form.querySelector('.PrimaryButton');
-
-        // envio do formulário
-        form.addEventListener('submit', (e) => {
+        // --- EVENTO DE SUBMISSÃO DO FORMULÁRIO ---
+        form.addEventListener("submit", async (e) => {
             e.preventDefault();
-
-            const email = document.querySelector('input[name="email"]').value.trim();
-            if(!email){
-                alert('Preencha o campo de email.');
-                return;
-            }
-
-            const blocks = container.querySelectorAll('.reserva-block');
-            let emailBody = '';
-
-            for (let i = 0; i < blocks.length; i++) {
-                const block = blocks[i];
-
-                const nome = block.querySelector('input[name="nome"]').value.trim();
-                const setor = block.querySelector('input[name="setor"]').value.trim();
-                const disciplina = block.querySelector('input[name="disciplina"]').value.trim();
-                const dataInicio = block.querySelector('input[name="dataInicio"]').value;
-                const dataFim = block.querySelector('input[name="dataFim"]').value;
-                const inicio = block.querySelector('input[name="inicio"]').value;
-                const fim = block.querySelector('input[name="fim"]').value;
-                const numAlunos = block.querySelector('input[name="numAlunos"]').value;
-                const matricula = block.querySelector('input[name="matricula"]').value.trim();
-                const softwares = block.querySelector('textarea[name="softwares"]').value.trim();
-                const observacoes = block.querySelector('textarea[name="observacoes"]').value.trim();
-                const cargo = block.querySelector('input[name="cargo"]').value.trim();
-                const plataforma = block.querySelector('select[name="plataforma"]').value.trim();
-
-                // validações
-                if (!nome || !setor || !disciplina || !dataInicio || !dataFim || !inicio || !fim || !numAlunos || !softwares || !cargo || !matricula || !plataforma) {
-                    alert('Preencha todos os campos obrigatórios em todas as reservas.');
-                    return;
-                }
-                if (new Date(dataFim) < new Date(dataInicio)) {
-                    alert('Data de término deve ser >= data de início.');
-                    return;
-                }
-                if (!isDateAtLeastDaysAhead(dataInicio, 4)) {
-                    alert('A solicitação deve ser feita com 5 dias de antecedência.');
-                    return;
-                }
-
-                // Desabilitar o botão e mudar o texto para indicar o envio
-                submitButton.disabled = true;
-                submitButton.innerText = 'Enviando...';
-                submitButton.style.opacity = '0.7';
-                
-                // montar corpo do email
-                emailBody += `
-        Reserva ${i+1}:
-        Professor: ${nome}
-        Matrícula: ${matricula}
-        Cargo/Função: ${cargo}
-        Setor/Lotação: ${setor}
-        Data: ${dataInicio} até ${dataFim}
-        Horário: ${inicio} até ${fim}
-        Número de alunos: ${numAlunos}
-        Disciplina / Conteúdo: ${disciplina}
-        Softwares: ${softwares}
-        Observações: ${observacoes || 'N/A'}
-        Plataforma: ${plataforma}
-
-        -----------------------------
-        `;
-            }
             
-            // array de promessas para enviar múltiplos emails
-            const promises = [];
+            submitButton.disabled = true;
+            submitButton.innerText = "Enviando...";
 
-            //envia para o colegiado cópia do conteúdo formulário
-            promises.push(
-            emailjs.send('service_8bten8g', 'template_rm6jmnk', {
-                to_email: 'bsoliveira.cic@uesc.br',
-                message: emailBody
-            }));
+            const email = form.querySelector("input[name='email']").value.trim();
+            const reservas = [];
 
-            //envia para o professor cópia do conteúdo formulário
-            promises.push(
-            emailjs.send('service_8bten8g', 'template_rm6jmnk', {
-                to_email: email,
-                message: emailBody
-            }));
-
-            //envia para o professor email de confirmação/análise
-            promises.push(
-            emailjs.send('service_8bten8g', 'template_kfaypeb', {
-                to_email: email,
-                //message: `Olá ${email.split('@')[0]},\n\nSeu pedido de reserva foi recebido e está sendo analisado.\n\nResumo:\n${emailBody}`
-            }));
-            
-            Promise.all(promises)
-            .then(() => {
-                msgFeedback.style.color = 'green';
-                msgFeedback.innerText = 'Solicitação(ões) de reserva(s) enviada(s) com sucesso!';
-            })
-            .catch(() => {
-                msgFeedback.style.color = 'red';
-                msgFeedback.innerText = 'Erro ao enviar. Tente novamente.';
-            })
-            .finally(() => {
-                // Reabilitar o botão e restaurar o texto em ambos os casos (sucesso ou erro)
-                submitButton.disabled = false;
-                submitButton.innerText = 'Solicitar reserva';
-                submitButton.style.opacity = '1';
+            document.querySelectorAll(".reserva-block").forEach((block, index) => {
+                reservas.push({
+                    numero: index + 1,
+                    nome: block.querySelector("input[name='nome']").value.trim(),
+                    matricula: block.querySelector("input[name='matricula']").value.trim(),
+                    cargo: block.querySelector("input[name='cargo']").value.trim(),
+                    setor: block.querySelector("input[name='setor']").value.trim(),
+                    dataInicio: block.querySelector("input[name='dataInicio']").value,
+                    dataFim: block.querySelector("input[name='dataFim']").value,
+                    inicio: block.querySelector("input[name='inicio']").value,
+                    fim: block.querySelector("input[name='fim']").value,
+                    numAlunos: block.querySelector("input[name='numAlunos']").value,
+                    disciplina: block.querySelector("input[name='disciplina']").value.trim(),
+                    softwares: block.querySelector("textarea[name='softwares']").value.trim(),
+                    observacoes: block.querySelector("textarea[name='observacoes']").value.trim(),
+                    plataforma: block.querySelector("select[name='plataforma']").value
+                });
             });
 
+            let corpoEmail = `Solicitação de Reserva de Laboratório\n\nSolicitante: ${email}\n\n`;
+            reservas.forEach(r => {
+                const dataInicioFormatada = formatarData(r.dataInicio);
+                const dataFimFormatada = formatarData(r.dataFim);
+
+                corpoEmail += `
+    ===========================
+    Reserva ${r.numero}
+    ===========================
+    Nome: ${r.nome}
+    Matrícula: ${r.matricula}
+    Cargo: ${r.cargo}
+    Setor: ${r.setor}
+
+    Data: ${dataInicioFormatada} até ${dataFimFormatada}
+    Horário: ${r.inicio} - ${r.fim}
+    Nº Alunos: ${r.numAlunos}
+    Disciplina: ${r.disciplina}
+
+    Softwares/Recursos: ${r.softwares}
+    Observações: ${r.observacoes || 'Nenhuma'}
+    Plataforma: ${r.plataforma}
+    \n\n`;
+            });
+
+            try {
+                const res = await fetch("http://localhost:3001/enviar-reserva", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ emailProfessor: email, corpoEmail })
                 });
+                
+                if (res.ok) {
+                    const data = await res.json();
+                    msgFeedback.style.color = "green";
+                    msgFeedback.innerText = data.message;
+                    
+                    const allBlocks = document.querySelectorAll('.reserva-block');
+                    allBlocks.forEach((block, index) => {
+                        if (index > 0) block.remove();
+                    });
+                    form.reset();
+                    updateReservaBlocks();
+
+                } else {
+                    const errorData = await res.json();
+                    msgFeedback.style.color = "red";
+                    msgFeedback.innerText = errorData.message || "Erro ao enviar a solicitação.";
+                }
+
+            } catch (err) {
+                msgFeedback.style.color = "red";
+                msgFeedback.innerText = "Erro de conexão. Verifique se o servidor está rodando.";
+            } finally {
+                submitButton.disabled = false;
+                submitButton.innerText = "Solicitar reserva";
+            }
+        });
+
+        updateReservaBlocks();
+    });
     </script>
 
     <script src="../js/header.js"></script>
