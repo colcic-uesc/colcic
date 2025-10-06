@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Reserva | COLCIC</title>
+
+		<link rel="shortcut icon" href="../assets/favicon.png" type="image/x-icon" />
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+		<link rel="stylesheet" type="text/css" href="../css/default.css" />
+        <link rel="stylesheet" type="text/css" href="../css/reset.css" />
+        <link rel="stylesheet" type="text/css" href="../css/header.css" />
+        <link rel="stylesheet" type="text/css" href="../css/buttons.css" />
+        <link rel="stylesheet" type="text/css" href="../css/pages/reserva.css" />
+        <link rel="stylesheet" type="text/css" href="../css/footer.css" />
+        <link rel="stylesheet" type="text/css" href="../css/tooltip.css" />
+        <link rel="stylesheet" type="text/css" href="../css/goToTop.css" />
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+		<title>COLCIC | Colegiado de Ciência da Computação</title>
+		<meta
+			name="title"
+			content="COLCIC | Colegiado de Ciência da Computação"
+		/>
+		<meta
+			name="description"
+			content="O Curso de Bacharelado em Ciência da Computação da Universidade Estadual de Santa Cruz provê uma formação que capacita o profissional para a solução de problemas do mundo real, por meio da construção de modelos computacionais e de sua implementação."
+		/>
+
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://igorroc.github.io/colcic" />
+		<meta
+			property="og:title"
+			content="COLCIC | Colegiado de Ciência da Computação"
+		/>
+		<meta
+			property="og:description"
+			content="O Curso de Bacharelado em Ciência da Computação da Universidade Estadual de Santa Cruz provê uma formação que capacita o profissional para a solução de problemas do mundo real, por meio da construção de modelos computacionais e de sua implementação."
+		/>
+		<meta
+			property="og:image"
+			content="https://raw.githubusercontent.com/igorroc/colcic/main/assets/banner.png"
+		/>
+
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta
+			property="twitter:url"
+			content="https://igorroc.github.io/colcic"
+		/>
+		<meta
+			property="twitter:title"
+			content="COLCIC | Colegiado de Ciência da Computação"
+		/>
+		<meta
+			property="twitter:description"
+			content="O Curso de Bacharelado em Ciência da Computação da Universidade Estadual de Santa Cruz provê uma formação que capacita o profissional para a solução de problemas do mundo real, por meio da construção de modelos computacionais e de sua implementação."
+		/>
+		<meta
+			property="twitter:image"
+			content="https://raw.githubusercontent.com/igorroc/colcic/main/assets/banner.png"
+		/>
+
+		<script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
+
+    </head>
+
+<body>
+    <header>
+        <div class="wrapper">
+            <div class="wrapperContent">
+                <a class="logo" href="../">
+                    <img src="../assets/logo.png" alt="Logo COLCIC" />
+                </a>
+                <div class="navList">
+                    <ul>
+                        <a href="../">Início</a>
+                        <li class="dropdown">
+                            <span class="title">
+                                <span> Sobre o curso </span>
+                                <iconify-icon
+                                    icon="dashicons:arrow-down-alt2"
+                                ></iconify-icon>
+                            </span>
+                            <ul>
+                                <a href="../sobre"
+                                    >Ciência da Computação na UESC</a
+                                >
+                                <a href="../disciplinas"
+                                    >Programa das Disciplinas</a
+                                >
+                                <a
+                                    target="_blank"
+                                    href="../files/comp_curriculares/matriz_cic_2012.pdf"
+                                >
+                                    <span> Fluxograma do Curso </span>
+                                    <iconify-icon
+                                        icon="akar-icons:download"
+                                    ></iconify-icon>
+                                </a>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <span class="title">
+                                <span> Apoio ao estudante </span>
+                                <iconify-icon
+                                    icon="dashicons:arrow-down-alt2"
+                                ></iconify-icon>
+                            </span>
+                            <ul>
+                                <a
+                                    target="_blank"
+                                    href="http://www.prograd.uesc.br/PortalSagres/Acesso.aspx"
+                                >
+                                    <span> Portal Acadêmico </span>
+                                    <iconify-icon
+                                        icon="akar-icons:link-chain"
+                                    ></iconify-icon>
+                                </a>
+                                <a
+                                    target="_blank"
+                                    href="https://igorroc.github.io/finalcountdown/"
+                                >
+                                    <span>
+                                        Calculadora de Prova Final
+                                    </span>
+                                    <iconify-icon
+                                        icon="akar-icons:link-chain"
+                                    ></iconify-icon>
+                                </a>
+                                <a
+                                    target="_blank"
+                                    href="https://uesc.ilrocha.com/emails/"
+                                >
+                                    <span> Email dos professores </span>
+                                    <iconify-icon
+                                        icon="akar-icons:link-chain"
+                                    ></iconify-icon>
+                                </a>
+                                <a href="../aproveitamentos">
+                                    Aproveitamento de Estudos
+                                </a>
+                                <a href="../matricula" class="displayNone">
+                                    Matrícula para Veteranos
+                                </a>
+                                <a href="../complementares">
+                                    Atividades complementares (Barema)
+                                </a>
+                                <a
+                                    target="_blank"
+                                    href="../files/comp_curriculares/regulamentoestagio.pdf"
+                                >
+                                    <span> Regulamento do Estágio </span>
+                                    <iconify-icon
+                                        icon="akar-icons:download"
+                                    ></iconify-icon>
+                                </a>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <span class="title">
+                                <span> Colegiado </span>
+                                <iconify-icon
+                                    icon="dashicons:arrow-down-alt2"
+                                ></iconify-icon>
+                            </span>
+                            <ul>
+                                <a href="../colegiado">
+                                    Composição do colegiado
+                                </a>
+                                <a href="../calendario">
+                                    Calendário de Reuniões
+                                </a>
+
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <span class="title">
+                                <span> Diversos </span>
+                                <iconify-icon
+                                    icon="dashicons:arrow-down-alt2"
+                                ></iconify-icon>
+                            </span>
+                            <ul>
+                                <a
+                                    target="_blank"
+                                    href="http://sinform.tecnojr.com.br/"
+                                >
+                                    <span> SINFORM </span>
+                                    <iconify-icon
+                                        icon="akar-icons:link-chain"
+                                    ></iconify-icon>
+                                </a>
+
+                                <a href="../licencas">
+                                    Licenças acadêmicas de Software
+                                </a>
+                            </ul>
+                        </li>
+                        <a href="../contato">Contato</a>
+                        <a active href="../reserva">Reservas</a>
+                    </ul>
+                </div>
+                <button class="iconMenu" onclick="toggleNavList()">
+                    <div>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </button>
+            </div>
+        </div>
+        <div id="top"></div>
+    </header>
+
+    <main>
+        <section variant>
+            <div class="MaxWidthWrapper">
+                <div class="mainWrapper">
+                    
+                    <div class="contact">
+                        <h2>Quem Pode Solicitar Reserva de Laboratório?</h2>
+                        <div class="contactWrapper">
+                            
+                            <div class="contactItem">
+                                <div class="contactIcon">
+                                    <iconify-icon icon="bi:check-circle-fill"></iconify-icon>
+                                </div>
+                                <div class="contactInfo">
+                                    <div class="title">Órgãos de Administração Setorial</div>
+                                    <div class="content">
+                                        <p>Departamentos e Colegiados de Curso.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="contactItem">
+                                <div class="contactIcon">
+                                    <iconify-icon icon="bi:check-circle-fill"></iconify-icon>
+                                </div>
+                                <div class="contactInfo">
+                                    <div class="title">Órgãos de Administração Superior</div>
+                                    <div class="content">
+                                        <p>CONSAD, CONSEP, CONSU e Reitoria.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="contactItem">
+                                <div class="contactIcon">
+                                    <iconify-icon icon="bi:check-circle-fill"></iconify-icon>
+                                </div>
+                                <div class="contactInfo">
+                                    <div class="title">Órgãos de Apoio Administrativo</div>
+                                    <div class="content">
+                                        <p>Secretaria de Registro de Diplomas, ASCOM, EDITUS, PROJUS e UDO.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="contactItem">
+                                <div class="contactIcon">
+                                    <iconify-icon icon="bi:check-circle-fill"></iconify-icon>
+                                </div>
+                                <div class="contactInfo">
+                                    <div class="title">Órgãos Suplementares</div>
+                                    <div class="content">
+                                        <p>Biblioteca Central, Prefeitura do Campus, Gráfica Universitária, Hospital Veterinário, CEDOC, SECREGE e Rádio e TV Universitária.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mainContentPhoto">
+                        <img src="../assets/sobre2.png" alt="" />
+                    </div>
+                
+                </div>
+            </div>
+        </section>
+	
+        <section>
+            <div class="MaxWidthWrapper">
+                <div class="mainWrapper">
+                    <div class="mainContent">
+						
+                        <h1>Solicitação de Reserva de Laboratório</h1>
+
+                        <form id="reservaForm" novalidate>
+
+                            <div class="form-group emailField">
+                                <label>Email do Solicitante *</label>
+                                <input type="email" name="email" required />
+                            </div>
+                     
+                            <div id="disciplinasContainer">
+
+                                <!-- Bloco de reserva (um conjunto de campos) -->
+                                <div class="reserva-block">
+                                    <div class="reserva-header">
+                                        <h3>Reserva 1</h3>
+                                        <button type="button" class="removeBtn" style="display:none;">
+                                            <i class="fa-solid fa-trash-can"></i>
+                                            <span>Remover</span>
+                                        </button>
+                                    </div>
+
+                                    <!-- Seção 1: Responsável -->
+                                    <fieldset class="reserva-section">
+                                        <legend>Informações do responsável</legend>
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label>Nome do docente responsável *</label>
+                                                <input type="text" name="nome" required />
+                                            </div>
+                                            <div class="form-group matriculaDiv">
+                                                <label>Matrícula UESC *</label>
+                                                <input type="text" name="matricula" required />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label>Cargo / Função *</label>
+                                                <input type="text" name="cargo" required />
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Setor / Lotação *</label>
+                                                <input type="text" name="setor" required />
+                                            </div>
+                                        </div>
+                                    </fieldset>
+
+                                    <!-- Seção 2: Informações da reserva -->
+                                    <fieldset class="reserva-section">
+                                        <legend>Informações da reserva</legend>
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label>Data de início *</label>
+                                                <input type="date" name="dataInicio" required />
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Data de término *</label>
+                                                <input type="date" name="dataFim" required />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label>Horário início *</label>
+                                                <input type="time" name="inicio" required />
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Horário término *</label>
+                                                <input type="time" name="fim" required />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <label>Número de alunos *</label>
+                                                <input type="number" name="numAlunos" min="1" required />
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Disciplina / Conteúdo *</label>
+                                                <input type="text" name="disciplina" required />
+                                            </div>
+                                        </div>
+                                    </fieldset>
+
+                                    <!-- Seção 3: Recursos -->
+                                    <fieldset class="reserva-section">
+                                        <legend>Informações sobre utilização de recursos</legend>
+                                        <p style="font-size: 0.9rem; color: rgba(0, 0, 0, 0.452); margin-bottom: 0.8rem;">
+                                            Observação: Solicitação de softwares deve ser feita com antecedência mínima de 15 dias, para outros recursos, 5 dias.
+                                        </p>
+
+                                        <div class="form-group full-width">
+                                            <label>Softwares/Recursos que serão utilizados *</label>
+                                            <textarea name="softwares" rows="3" required></textarea>
+                                        </div>
+
+                                        <div class="form-group full-width">
+                                            <label>Procedimentos para Instalação / Links / Comandos / Outros</label>
+                                            <textarea name="observacoes" rows="3"></textarea>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Plataforma *</label>
+                                            <select name="plataforma" required style="width: 150px;">
+                                                <option value="">Selecione...</option>
+                                                <option value="Windows">Windows</option>
+                                                <option value="Linux">Linux</option>
+                                                <option value="Ambos">Ambos</option>
+                                            </select>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+
+                            <button type="button" class="addBtn" style="font-weight:bold;">+ Adicionar nova solicitação</button>
+
+                            <p>Todos os campos com (*) são obrigatórios.</p>
+
+                            <div class="button-wrapper">
+                                <button type="submit" class="PrimaryButton">Solicitar reserva</button>
+                            </div>
+                        </form>
+
+                        <div id="msgFeedback" style="margin-top:1rem; color:green; font-weight:bold;"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footerWave">
+            <div class="left"></div>
+            <a class="footerLogo" href="#top">
+                <div class="logo">
+                    <img
+                        src="../assets/footerLogo.png"
+                        alt="Logo do curso de Ciência da Computação"
+                    />
+                </div>
+            </a>
+            <div class="right"></div>
+        </div>
+        <div class="MaxWidthWrapper">
+            <div class="footerWrapper">
+                <div class="footerFloat">
+                    <div class="footerContent">
+                        <h1>Contato</h1>
+                        <ul>
+                            <a
+                                target="_blank"
+                                href="https://goo.gl/maps/FKcmwBJ76WYrLQSj8"
+                            >
+                                <iconify-icon icon="heroicons:map-pin-solid"></iconify-icon>
+                                <span>
+                                    UESC, Pavilhão do DCET, 1º andar
+                                </span>
+                            </a>
+                            <a target="_blank" href="mailto:colcic@uesc.br">
+                                <iconify-icon icon="bi:envelope-fill"></iconify-icon>
+                                <span> colcic@uesc.br </span>
+                            </a>
+                            <a target="_blank" href="tel:7336805110">
+                                <iconify-icon icon="ant-design:phone-filled"></iconify-icon>
+                                <span> (73) 3680-5110 </span>
+                            </a>
+                            <a
+                                target="_blank"
+                                href="https://www.facebook.com/groups/colcic/"
+                            >
+                                <iconify-icon icon="akar-icons:facebook-fill"></iconify-icon>
+                                <span> Facebook </span>
+                            </a>
+                        </ul>
+                    </div>
+                    <div class="footerContent">
+                        <h1>Endereço</h1>
+                        <a target="_blank" href="#" class="linkEndereco">
+                            <p>UNIVERSIDADE ESTADUAL DE SANTA CRUZ - UESC</p>
+                            <p>Campus Soane Nazaré de Andrade</p>
+                            <p>Rodovia Jorge Amado, Km 16, Salobrinho</p>
+                            <p>CEP 45662-900. Ilhéus-Bahia</p>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footerCopy">
+                    <p>© 2022 - Todos os direitos reservados | COLCIC</p>
+                    <p>
+                        Desenvolvido por
+                        <a
+                            target="_blank"
+                            href="https://ilrocha.com"
+                            id="copyIgor"
+                            >Igor Rocha</a
+                        >
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const form = document.getElementById("reservaForm");
+        const msgFeedback = document.getElementById("msgFeedback");
+        const submitButton = form.querySelector('button[type="submit"]');
+        const container = document.getElementById("disciplinasContainer");
+        const addBtn = document.querySelector(".addBtn");
+
+        // --- FUNÇÕES PARA MÚLTIPLAS RESERVAS ---
+
+        const updateReservaBlocks = () => {
+            const blocks = container.querySelectorAll('.reserva-block');
+            blocks.forEach((block, index) => {
+                const header = block.querySelector('h3');
+                if (header) {
+                    header.innerText = `Reserva ${index + 1}`;
+                }
+                const removeBtn = block.querySelector('.removeBtn');
+                if (removeBtn) {
+                    removeBtn.style.display = blocks.length > 1 ? 'flex' : 'none';
+                }
+            });
+        };
+
+        // Evento para ADICIONAR uma nova reserva
+        addBtn.addEventListener("click", () => {
+            const firstBlock = container.querySelector('.reserva-block');
+            const newBlock = firstBlock.cloneNode(true);
+
+            // Limpa todos os campos de input, select e textarea apenas do bloco que foi clonado.
+            const fieldsToClear = newBlock.querySelectorAll('input, select, textarea');
+            fieldsToClear.forEach(field => {
+                field.value = '';
+            });
+            
+            container.appendChild(newBlock);
+            updateReservaBlocks();
+        });
+
+        // Evento para REMOVER uma reserva
+        container.addEventListener('click', (e) => {
+            if (e.target.closest('.removeBtn')) {
+                const blockToRemove = e.target.closest('.reserva-block');
+                blockToRemove.remove();
+                updateReservaBlocks();
+            }
+        });
+
+        // --- FUNÇÃO PARA FORMATAR A DATA ---
+        function formatarData(data) {
+            if (!data) return '';
+            const [ano, mes, dia] = data.split('-');
+            return `${dia}/${mes}/${ano}`;
+        }
+
+        // --- EVENTO DE SUBMISSÃO DO FORMULÁRIO ---
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            
+            submitButton.disabled = true;
+            submitButton.innerText = "Enviando...";
+
+            const email = form.querySelector("input[name='email']").value.trim();
+            const reservas = [];
+
+            document.querySelectorAll(".reserva-block").forEach((block, index) => {
+                reservas.push({
+                    numero: index + 1,
+                    nome: block.querySelector("input[name='nome']").value.trim(),
+                    matricula: block.querySelector("input[name='matricula']").value.trim(),
+                    cargo: block.querySelector("input[name='cargo']").value.trim(),
+                    setor: block.querySelector("input[name='setor']").value.trim(),
+                    dataInicio: block.querySelector("input[name='dataInicio']").value,
+                    dataFim: block.querySelector("input[name='dataFim']").value,
+                    inicio: block.querySelector("input[name='inicio']").value,
+                    fim: block.querySelector("input[name='fim']").value,
+                    numAlunos: block.querySelector("input[name='numAlunos']").value,
+                    disciplina: block.querySelector("input[name='disciplina']").value.trim(),
+                    softwares: block.querySelector("textarea[name='softwares']").value.trim(),
+                    observacoes: block.querySelector("textarea[name='observacoes']").value.trim(),
+                    plataforma: block.querySelector("select[name='plataforma']").value
+                });
+            });
+
+            let corpoEmail = `Solicitação de Reserva de Laboratório\n\nSolicitante: ${email}\n\n`;
+            reservas.forEach(r => {
+                const dataInicioFormatada = formatarData(r.dataInicio);
+                const dataFimFormatada = formatarData(r.dataFim);
+
+                corpoEmail += `
+    ===========================
+    Reserva ${r.numero}
+    ===========================
+    Nome: ${r.nome}
+    Matrícula: ${r.matricula}
+    Cargo: ${r.cargo}
+    Setor: ${r.setor}
+
+    Data: ${dataInicioFormatada} até ${dataFimFormatada}
+    Horário: ${r.inicio} - ${r.fim}
+    Nº Alunos: ${r.numAlunos}
+    Disciplina: ${r.disciplina}
+
+    Softwares/Recursos: ${r.softwares}
+    Observações: ${r.observacoes || 'Nenhuma'}
+    Plataforma: ${r.plataforma}
+    \n\n`;
+            });
+
+            try {
+                const res = await fetch("http://localhost:3001/enviar-reserva", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ emailProfessor: email, corpoEmail })
+                });
+                
+                if (res.ok) {
+                    const data = await res.json();
+                    msgFeedback.style.color = "green";
+                    msgFeedback.innerText = data.message;
+                    
+                    const allBlocks = document.querySelectorAll('.reserva-block');
+                    allBlocks.forEach((block, index) => {
+                        if (index > 0) block.remove();
+                    });
+                    form.reset();
+                    updateReservaBlocks();
+
+                } else {
+                    const errorData = await res.json();
+                    msgFeedback.style.color = "red";
+                    msgFeedback.innerText = errorData.message || "Erro ao enviar a solicitação.";
+                }
+
+            } catch (err) {
+                msgFeedback.style.color = "red";
+                msgFeedback.innerText = "Erro de conexão. Verifique se o servidor está rodando.";
+            } finally {
+                submitButton.disabled = false;
+                submitButton.innerText = "Solicitar reserva";
+            }
+        });
+
+        updateReservaBlocks();
+    });
+    </script>
+
+    <script src="../js/header.js"></script>
+</body>
+</html>
