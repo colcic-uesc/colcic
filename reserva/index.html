@@ -518,7 +518,7 @@
             const firstBlock = container.querySelector('.reserva-block');
             const newBlock = firstBlock.cloneNode(true);
 
-            // Limpa todos os campos de input, select e textarea APENAS do bloco que foi clonado.
+            // Limpa todos os campos de input, select e textarea apenas do bloco que foi clonado.
             const fieldsToClear = newBlock.querySelectorAll('input, select, textarea');
             fieldsToClear.forEach(field => {
                 field.value = '';
