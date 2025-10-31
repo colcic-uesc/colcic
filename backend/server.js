@@ -46,7 +46,7 @@ app.post("/enviar-reserva", async (req, res) => {
     }
 });
 
-const PORT = 3001;
+const PORT = 443;
 app.listen(PORT, () => {
     console.log(`Servidor rodando na porta ${PORT}`);
 });
