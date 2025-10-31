@@ -585,7 +585,7 @@
             });
 
             try {
-                const res = await fetch("http://200.128.66.215:3001/enviar-reserva", {
+                const res = await fetch("http://172.17.1.215:3001/enviar-reserva", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ emailProfessor: email, corpoEmail })
