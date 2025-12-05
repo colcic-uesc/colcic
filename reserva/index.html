@@ -475,151 +475,148 @@
         </div>
     </footer>
 
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
     <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const form = document.getElementById("reservaForm");
-        const msgFeedback = document.getElementById("msgFeedback");
-        const submitButton = form.querySelector('button[type="submit"]');
-        const container = document.getElementById("disciplinasContainer");
-        const addBtn = document.querySelector(".addBtn");
 
-        // --- FUNÇÕES PARA MÚLTIPLAS RESERVAS ---
+        (function(){
+            if (typeof emailjs !== 'undefined') {
+                emailjs.init("QKcMwKmNV0_e-i5qv"); 
+            } else {
+                console.error("A biblioteca EmailJS não foi carregada. Verifique seu AdBlock.");
+            }
+        })();
 
-        const updateReservaBlocks = () => {
-            const blocks = container.querySelectorAll('.reserva-block');
-            blocks.forEach((block, index) => {
-                const header = block.querySelector('h3');
-                if (header) {
-                    header.innerText = `Reserva ${index + 1}`;
-                }
-                const removeBtn = block.querySelector('.removeBtn');
-                if (removeBtn) {
-                    removeBtn.style.display = blocks.length > 1 ? 'flex' : 'none';
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById("reservaForm");
+            const msgFeedback = document.getElementById("msgFeedback");
+            const submitButton = form.querySelector('button[type="submit"]');
+            const container = document.getElementById("disciplinasContainer");
+            const addBtn = document.querySelector(".addBtn");
+
+            // --- FUNÇÕES PARA MÚLTIPLAS RESERVAS ---
+            const updateReservaBlocks = () => {
+                const blocks = container.querySelectorAll('.reserva-block');
+                blocks.forEach((block, index) => {
+                    const header = block.querySelector('h3');
+                    if (header) { header.innerText = `Reserva ${index + 1}`; }
+                    const removeBtn = block.querySelector('.removeBtn');
+                    if (removeBtn) {
+                        removeBtn.style.display = blocks.length > 1 ? 'flex' : 'none';
+                    }
+                });
+            };
+
+            addBtn.addEventListener("click", () => {
+                const firstBlock = container.querySelector('.reserva-block');
+                const newBlock = firstBlock.cloneNode(true);
+                const fieldsToClear = newBlock.querySelectorAll('input, select, textarea');
+                fieldsToClear.forEach(field => { field.value = ''; });
+                container.appendChild(newBlock);
+                updateReservaBlocks();
+            });
+
+            container.addEventListener('click', (e) => {
+                if (e.target.closest('.removeBtn')) {
+                    const blockToRemove = e.target.closest('.reserva-block');
+                    blockToRemove.remove();
+                    updateReservaBlocks();
                 }
             });
-        };
 
-        // Evento para ADICIONAR uma nova reserva
-        addBtn.addEventListener("click", () => {
-            const firstBlock = container.querySelector('.reserva-block');
-            const newBlock = firstBlock.cloneNode(true);
+            function formatarData(data) {
+                if (!data) return '';
+                const [ano, mes, dia] = data.split('-');
+                return `${dia}/${mes}/${ano}`;
+            }
 
-            // Limpa todos os campos de input, select e textarea apenas do bloco que foi clonado.
-            const fieldsToClear = newBlock.querySelectorAll('input, select, textarea');
-            fieldsToClear.forEach(field => {
-                field.value = '';
+            // --- EVENTO DE ENVIO COM EMAILJS ---
+            form.addEventListener("submit", (e) => {
+                e.preventDefault();
+                
+                submitButton.disabled = true;
+                submitButton.innerText = "Enviando...";
+
+                const emailSolicitante = form.querySelector("input[name='email']").value.trim();
+                const reservas = [];
+
+                // Coleta os dados de todos os blocos
+                document.querySelectorAll(".reserva-block").forEach((block, index) => {
+                    reservas.push({
+                        numero: index + 1,
+                        nome: block.querySelector("input[name='nome']").value.trim(),
+                        matricula: block.querySelector("input[name='matricula']").value.trim(),
+                        cargo: block.querySelector("input[name='cargo']").value.trim(),
+                        setor: block.querySelector("input[name='setor']").value.trim(),
+                        dataInicio: block.querySelector("input[name='dataInicio']").value,
+                        dataFim: block.querySelector("input[name='dataFim']").value,
+                        inicio: block.querySelector("input[name='inicio']").value,
+                        fim: block.querySelector("input[name='fim']").value,
+                        numAlunos: block.querySelector("input[name='numAlunos']").value,
+                        disciplina: block.querySelector("input[name='disciplina']").value.trim(),
+                        softwares: block.querySelector("textarea[name='softwares']").value.trim(),
+                        observacoes: block.querySelector("textarea[name='observacoes']").value.trim(),
+                        plataforma: block.querySelector("select[name='plataforma']").value
+                    });
+                });
+
+                // Monta a string única com todas as reservas
+                let corpoEmailCompleto = `Solicitação de Reserva de Laboratório\n\nSolicitante: ${emailSolicitante}\n\n`;
+                reservas.forEach(r => {
+                    const dataInicioFormatada = formatarData(r.dataInicio);
+                    const dataFimFormatada = formatarData(r.dataFim);
+
+                    corpoEmailCompleto += `
+                    Reserva ${r.numero}
+                    ===========================
+                    Nome: ${r.nome}
+                    Matrícula: ${r.matricula}
+                    Cargo: ${r.cargo}
+                    Setor/Lotação: ${r.setor}
+
+                    Data: ${dataInicioFormatada} até ${dataFimFormatada}
+                    Horário: ${r.inicio} - ${r.fim}
+                    Nº Alunos: ${r.numAlunos}
+                    Disciplina/Conteúdo: ${r.disciplina}
+
+                    Softwares/Recursos: ${r.softwares}
+                    Observações: ${r.observacoes || 'Nenhuma'}
+                    Plataforma: ${r.plataforma}
+                    \n\n`;
+                });
+
+                // Parâmetros para o Template do EmailJS
+                const templateParams = {
+                    to_email: emailSolicitante, 
+                    message: corpoEmailCompleto 
+                };
+
+                // Envio para o EmailJS
+                emailjs.send("service_u2xap6j", "template_tuk15w7", templateParams)
+                    .then(function(response) {
+                        msgFeedback.style.color = "green";
+                        msgFeedback.innerText = "Sua solicitação foi enviada com sucesso!";
+                        
+                        // Limpeza do formulário
+                        const allBlocks = document.querySelectorAll('.reserva-block');
+                        allBlocks.forEach((block, index) => {
+                            if (index > 0) block.remove();
+                        });
+                        form.reset();
+                        updateReservaBlocks();
+                    }, function(error) {
+                        console.error("Erro:", error);
+                        msgFeedback.style.color = "red";
+                        msgFeedback.innerText = "Erro ao enviar: " + JSON.stringify(error);
+                    })
+                    .finally(() => {
+                        submitButton.disabled = false;
+                        submitButton.innerText = "Solicitar reserva";
+                    });
             });
-            
-            container.appendChild(newBlock);
+
             updateReservaBlocks();
         });
-
-        // Evento para REMOVER uma reserva
-        container.addEventListener('click', (e) => {
-            if (e.target.closest('.removeBtn')) {
-                const blockToRemove = e.target.closest('.reserva-block');
-                blockToRemove.remove();
-                updateReservaBlocks();
-            }
-        });
-
-        // --- FUNÇÃO PARA FORMATAR A DATA ---
-        function formatarData(data) {
-            if (!data) return '';
-            const [ano, mes, dia] = data.split('-');
-            return `${dia}/${mes}/${ano}`;
-        }
-
-        // --- EVENTO DE SUBMISSÃO DO FORMULÁRIO ---
-        form.addEventListener("submit", async (e) => {
-            e.preventDefault();
-            
-            submitButton.disabled = true;
-            submitButton.innerText = "Enviando...";
-
-            const email = form.querySelector("input[name='email']").value.trim();
-            const reservas = [];
-
-            document.querySelectorAll(".reserva-block").forEach((block, index) => {
-                reservas.push({
-                    numero: index + 1,
-                    nome: block.querySelector("input[name='nome']").value.trim(),
-                    matricula: block.querySelector("input[name='matricula']").value.trim(),
-                    cargo: block.querySelector("input[name='cargo']").value.trim(),
-                    setor: block.querySelector("input[name='setor']").value.trim(),
-                    dataInicio: block.querySelector("input[name='dataInicio']").value,
-                    dataFim: block.querySelector("input[name='dataFim']").value,
-                    inicio: block.querySelector("input[name='inicio']").value,
-                    fim: block.querySelector("input[name='fim']").value,
-                    numAlunos: block.querySelector("input[name='numAlunos']").value,
-                    disciplina: block.querySelector("input[name='disciplina']").value.trim(),
-                    softwares: block.querySelector("textarea[name='softwares']").value.trim(),
-                    observacoes: block.querySelector("textarea[name='observacoes']").value.trim(),
-                    plataforma: block.querySelector("select[name='plataforma']").value
-                });
-            });
-
-            let corpoEmail = `Solicitação de Reserva de Laboratório\n\nSolicitante: ${email}\n\n`;
-            reservas.forEach(r => {
-                const dataInicioFormatada = formatarData(r.dataInicio);
-                const dataFimFormatada = formatarData(r.dataFim);
-
-                corpoEmail += `
-    ===========================
-    Reserva ${r.numero}
-    ===========================
-    Nome: ${r.nome}
-    Matrícula: ${r.matricula}
-    Cargo: ${r.cargo}
-    Setor: ${r.setor}
-
-    Data: ${dataInicioFormatada} até ${dataFimFormatada}
-    Horário: ${r.inicio} - ${r.fim}
-    Nº Alunos: ${r.numAlunos}
-    Disciplina: ${r.disciplina}
-
-    Softwares/Recursos: ${r.softwares}
-    Observações: ${r.observacoes || 'Nenhuma'}
-    Plataforma: ${r.plataforma}
-    \n\n`;
-            });
-
-            try {
-                const res = await fetch("https://colcic.uesc.br/enviar-reserva", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ emailProfessor: email, corpoEmail })
-                });
-                
-                if (res.ok) {
-                    const data = await res.json();
-                    msgFeedback.style.color = "green";
-                    msgFeedback.innerText = data.message;
-                    
-                    const allBlocks = document.querySelectorAll('.reserva-block');
-                    allBlocks.forEach((block, index) => {
-                        if (index > 0) block.remove();
-                    });
-                    form.reset();
-                    updateReservaBlocks();
-
-                } else {
-                    const errorData = await res.json();
-                    msgFeedback.style.color = "red";
-                    msgFeedback.innerText = errorData.message || "Erro ao enviar a solicitação.";
-                }
-
-            } catch (err) {
-                msgFeedback.style.color = "red";
-                msgFeedback.innerText = "Erro de conexão. Verifique se o servidor está rodando.";
-            } finally {
-                submitButton.disabled = false;
-                submitButton.innerText = "Solicitar reserva";
-            }
-        });
-
-        updateReservaBlocks();
-    });
     </script>
 
     <script src="../js/header.js"></script>
