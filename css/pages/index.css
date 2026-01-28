@@ -202,6 +202,31 @@
 	gap: 20px;
 }
 
+.footerLogosLarge {
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    gap: 40px;              
+    margin-top: 30px;        
+    margin-bottom: 20px;   
+    flex-wrap: wrap;         
+    width: 100%;
+}
+
+.footerLogosLarge img {
+    height: 80px;            
+    width: auto;            
+    object-fit: contain;
+    transition: all 0.3s ease;
+	background-color: #fff;
+	padding: 5px;
+	border-radius: 15px;
+}
+
+.footerLogosLarge img:hover {
+    transform: scale(1.1);   
+}
+
 @media (min-width: 860px) {
 	.mainContent p{
 		width: 80%;
