@@ -1,10 +1,10 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-br">
 	<head>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Licenças acadêmicas | COLCIC</title>
+		<title>Aproveitamento de Ações Extensionistas | COLCIC</title>
 
 		<link
 			rel="shortcut icon"
@@ -18,10 +18,15 @@
 		<link
 			rel="stylesheet"
 			type="text/css"
-			href="../css/pages/licencas.css"
+			href="../css/pages/aproveitamentos.css"
 		/>
 		<link rel="stylesheet" type="text/css" href="../css/footer.css" />
 		<link rel="stylesheet" type="text/css" href="../css/goToTop.css" />
+		<link
+			rel="stylesheet"
+			type="text/css"
+			href="../css/scrollAnimation.css"
+		/>
 
 		<!-- Primary Meta Tags -->
 		<title>COLCIC | Colegiado de Ciência da Computação</title>
@@ -82,7 +87,10 @@
 					<div class="navList">
 						<ul>
 							<a href="../">Início</a>
-							<li class="dropdown">
+							<li
+								class="dropdown"
+								style="transition-delay: 100ms !important"
+							>
 								<span class="title">
 									<span> Sobre o curso </span>
 									<iconify-icon
@@ -116,7 +124,7 @@
 									</a>
 								</ul>
 							</li>
-							<li class="dropdown">
+							<li active class="dropdown">
 								<span class="title">
 									<span> Apoio ao estudante </span>
 									<iconify-icon
@@ -147,7 +155,7 @@
 									<a href="../email">
 										Email dos professores 
 									</a>
-									<a href="../aproveitamentos">
+									<a active href="../aproveitamentos">
 										Aproveitamento de Estudos
 									</a>
 									<a href="../matricula" class="displayNone">
@@ -158,10 +166,10 @@
 									</a>
 									<a href="../extensionistas">
 										Ações de Extensão
-									</a>	
+									</a>									
 									<!-- <a href="https://barema.colcic.uesc.br">
-										Gerador de Barema
-									</a> -->
+                                        Gerador de Barema
+                                    </a> -->
 									<a
 										target="_blank"
 										href="../files/comp_curriculares/regulamentoestagio.pdf"
@@ -183,7 +191,10 @@
 								</ul>
 							</li>
 
-							<li active class="dropdown">
+							<li
+								class="dropdown"
+								style="transition-delay: 100ms !important"
+							>
 								<span class="title">
 									<span> Diversos </span>
 									<iconify-icon
@@ -201,13 +212,13 @@
 										></iconify-icon>
 									</a>
 
-									<a active href="../licencas">
+									<a href="../licencas">
 										Licenças acadêmicas de Software
 									</a>
 								</ul>
 							</li>
 
-							<a href="../colegiado"> Colegiado</a>
+                            <a href="../colegiado"> Colegiado</a>
 							<a href="../contato">Contato</a>
 							<a href="../reserva">Reservas</a>
 						</ul>
@@ -234,46 +245,104 @@
 					<div class="mainWrapper">
 						<div class="mainContent">
 							<h1>
-								Licenças acadêmicas <br />
-								<b>de Softwares</b>
+								Aproveitamento <br />
+								<b>de Ações de Extensão</b>
 							</h1>
 							<p>
-								São convênios entre a UESC/Colegiado de Ciência
-								da Computação e proprietários de licenças de
-								software - ferramentas para programação e
-								ambientes de desenvolvimento de software (IDE),
-								que dispõem seus produtos para o ambiente
-								universitário, no propósito de auxiliar o
-								processo de ensino-aprendizado. Essas licenças,
-								em geral, são direcionadas para
-								<b>
-									produção de aplicações voltadas para
-									treinamento, aplicações acadêmicas,
-									pesquisas e propósitos não comerciais.
-								</b>
+								Os alunos (ingressos a partir de 2023) poderão solicitar ao Colegiado do Curso a qualquer tempo o 
+								aproveitamento de atividades como Ação de Extensão, desde que o pedido 
+								seja registrado por protocolo, seja realizado de forma única e o estudante 
+								apresente a documentação comprobatória válida.
 							</p>
-							<p>
-								Caso as licenças não estejam disponíveis nos
-								Labs. entrar em contato com
-								<a href="mailto:colciclab@uesc.br"
-									>colciclab@uesc.br</a
-								>
-							</p>
-							<a href="#lista" class="PrimaryButton"
+							<a href="#procedimentos" class="PrimaryButton"
 								>Saiba mais</a
 							>
-						</div>
-						<div class="mainContentPhoto">
-							<img src="../assets/rocket.png" />
 						</div>
 					</div>
 				</div>
 			</section>
 			<section variant class="pointedSection">
 				<div class="MaxWidthWrapper">
-					<div id="lista">
-						<h2>Lista de Softwares</h2>
-						<div id="listaSoftwares"></div>
+					<div class="procedimentos" id="procedimentos">
+						<h2>Procedimentos</h2>
+						<div class="content">
+							<ol class="lista">
+								<li
+									class="scrollAnimation"
+									style="transition-delay: 0ms !important"
+								>
+									<b>Verificar</b> se seu aproveitamento
+									<b>enquadra-se</b> no Art. 13 da Resolução CONSEPE 11/2023.
+									<a
+										target="_blank"
+										href="../files/comp_curriculares/2023_01_Resolucao_CONSEPE.pdf"
+									>
+										clicando aqui.
+									</a>
+								</li>
+								<li
+									class="scrollAnimation"
+									style="transition-delay: 100ms !important"
+								>
+									Enviar solicitação via 
+									<a
+									target="_blank"
+									href="https://www.uesc.br/proad/index.php?item=conteudo_gerad_protocolo.php"
+									><b>Peticionamento Eletrônico (SEI)</b></a>
+								</li>
+								<li
+									class="scrollAnimation"
+									style="transition-delay: 200ms !important"
+								>
+ 									Como sugestão, você pode escrever no esclarecimento do requerimento algo parecido com (Aproveitamento de atividades extensionistas):
+									Gostaria de solicitar o aproveitamento das 80 horas de Ação de Extensão, conforme Art. 13 da Resolução CONSEPE 11/2023.
+								</li>
+
+								<ol type="a">
+									<li
+										class="scrollAnimation"
+										style="
+											transition-delay: 300ms !important;
+										"
+									>
+										Apresente a documentação comprobatória <b>válida</b> (as atividades válidas estão listadas no Artigo 14º da resolução 11/2023).
+									</li>
+									<li
+										class="scrollAnimation"
+										style="
+											transition-delay: 400ms !important;
+										"
+									>
+										Lembre-se que a soma da carga horária das atividades apresentadas e aceitas deve ser 
+										<b>igual ou superior a 80h. </b>
+									</li>
+									<li
+										class="scrollAnimation"
+										style="
+											transition-delay: 500ms !important;
+										"
+									>
+										Após a inserção dos documentos e preenchiemento das informações do novo processo no SEI,
+										<b> lembre-se de peticionar (clicando em "peticionar")</b> 
+									</li>
+									
+								</ol>
+
+								<li
+									class="scrollAnimation"
+									style="transition-delay: 600ms !important"
+								>
+									Os pedidos de aproveitamento de atividades como Ação de Extensão 
+									serão analisados pela CAAEAC e Coordenação do Curso. Aguarde a análise e o despacho da coordenação do Colcic.
+								</li>
+							</ol>
+							<div class="imageWrapper">
+								<img
+									src="../assets/astronaut.png"
+									alt="Astronauta"
+								/>
+							</div>
+						</div>
 					</div>
 				</div>
 			</section>
@@ -362,7 +431,7 @@
 		</footer>
 
 		<script src="../js/header.js"></script>
-		<script src="../js/listaSoftwares.js"></script>
 		<script src="../js/goToTop.js"></script>
+		<script src="../js/scrollAnimation.js"></script>
 	</body>
 </html>
