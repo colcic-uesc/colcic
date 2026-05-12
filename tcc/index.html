@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>TCCs dos Alunos | COLCIC</title>
+
+		<link
+			rel="shortcut icon"
+			href="../assets/favicon.png"
+			type="image/x-icon"
+		/>
+		<link rel="stylesheet" type="text/css" href="../css/default.css" />
+		<link rel="stylesheet" type="text/css" href="../css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="../css/header.css" />
+		<link rel="stylesheet" type="text/css" href="../css/buttons.css" />
+		<link rel="stylesheet" type="text/css" href="../css/pages/tcc.css" />
+		<link rel="stylesheet" type="text/css" href="../css/footer.css" />
+		<link rel="stylesheet" type="text/css" href="../css/hint.css" />
+		<link rel="stylesheet" type="text/css" href="../css/goToTop.css" />
+
+		<meta name="title" content="COLCIC | TCCs dos Alunos" />
+		<meta
+			name="description"
+			content="Lista de Trabalhos de Conclusão de Curso dos alunos de Ciência da Computação da UESC."
+		/>
+
+		<script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
+	</head>
+
+	<body>
+		<header>
+			<div class="wrapper">
+				<div class="wrapperContent">
+					<a class="logo" href="../">
+						<img src="../assets/logo.png" alt="Logo COLCIC" />
+					</a>
+					<div class="navList">
+						<ul>
+							<a href="../">Início</a>
+							<li class="dropdown">
+								<span class="title">
+									<span> Sobre o curso </span>
+									<iconify-icon
+										icon="dashicons:arrow-down-alt2"
+									></iconify-icon>
+								</span>
+								<ul>
+									<a href="../sobre"
+										>Ciência da Computação na UESC</a
+									>
+									<a href="../disciplinas"
+										>Programa das Disciplinas</a
+									>
+									<a
+										target="_blank"
+										href="../files/comp_curriculares/matriz_cic_2012.pdf"
+									>
+										<span> Fluxograma do Curso (ingressos até 2022) </span>
+										<iconify-icon
+											icon="akar-icons:download"
+										></iconify-icon>
+									</a>
+									<a
+										target="_blank"
+										href="../files/comp_curriculares/matriz_cic_2023.pdf"
+									>
+										<span> Fluxograma do Curso (ingressos a partir de 2023) </span>
+										<iconify-icon
+											icon="akar-icons:download"
+										></iconify-icon>
+									</a>
+								</ul>
+							</li>
+							<li active class="dropdown">
+								<span class="title">
+									<span> Apoio ao estudante </span>
+									<iconify-icon
+										icon="dashicons:arrow-down-alt2"
+									></iconify-icon>
+								</span>
+								<ul>
+									<a
+										target="_blank"
+										href="http://www.prograd.uesc.br/PortalSagres/Acesso.aspx"
+									>
+										<span> Portal Acadêmico </span>
+										<iconify-icon
+											icon="akar-icons:link-chain"
+										></iconify-icon>
+									</a>
+									<a href="../email"> Email dos professores </a>
+									<a href="../aproveitamentos">
+										Aproveitamento de Estudos
+									</a>
+									<a href="../matricula" class="displayNone">
+										Matrícula para Veteranos
+									</a>
+									<a href="../complementares">
+										Atividades complementares (Barema)
+									</a>
+									<a href="../extensionistas">
+										Ações de Extensão
+									</a>
+									<a active href="../tcc"> 
+										Trabalhos de Conclusão de Curso 
+									</a>
+									<a
+										target="_blank"
+										href="../files/comp_curriculares/regulamentoestagio.pdf"
+									>
+										<span> Regulamento do Estágio (ingressos até 2022)</span>
+										<iconify-icon
+											icon="akar-icons:download"
+										></iconify-icon>
+									</a>
+									<a
+										target="_blank"
+										href="../files/comp_curriculares/regulamentoestagio0.pdf"
+									>
+										<span> Regulamento do Estágio (ingressos a partir de 2023)</span>
+										<iconify-icon
+											icon="akar-icons:download"
+										></iconify-icon>
+									</a>
+								</ul>
+							</li>
+
+							<li class="dropdown">
+								<span class="title">
+									<span> Diversos </span>
+									<iconify-icon
+										icon="dashicons:arrow-down-alt2"
+									></iconify-icon>
+								</span>
+								<ul>
+									<a
+										target="_blank"
+										href="http://sinform.tecnojr.com.br/"
+									>
+										<span> SINFORM </span>
+										<iconify-icon
+											icon="akar-icons:link-chain"
+										></iconify-icon>
+									</a>
+									<a href="../licencas">
+										Licenças acadêmicas de Software
+									</a>
+								</ul>
+							</li>
+
+							<a href="../colegiado"> Colegiado</a>
+							<a href="../contato">Contato</a>
+							<a href="../reserva">Reservas</a>
+						</ul>
+					</div>
+					<button class="iconMenu" onclick="toggleNavList()">
+						<div>
+							<span></span>
+							<span></span>
+							<span></span>
+						</div>
+					</button>
+				</div>
+			</div>
+			<div id="top"></div>
+		</header>
+
+		<a id="goToTop" href="#top" class="hide">
+			<iconify-icon icon="akar-icons:arrow-up"></iconify-icon>
+		</a>
+
+		<main>
+			<section variant>
+				<div class="MaxWidthWrapper">
+					<div class="mainWrapper">
+						<div class="mainContent">
+							<h1>
+								Trabalhos de <br />
+								<b>Conclusão de Curso</b>
+							</h1>
+							<p>
+								Consulte abaixo o repositório de TCCs defendidos
+								no curso. Os arquivos estão disponíveis para
+								visualização no Google Drive.
+							</p>
+							<a href="#repositorio" class="SecondaryButton">
+								Acessar repositório
+							</a>
+						</div>
+						<div class="mainContentPhoto">
+							<img
+								src="../assets/main_home.png"
+								alt="Estudante usando computador"
+							/>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section>
+				<div class="MaxWidthWrapper">
+					<div class="composicao" id="repositorio">
+						<div class="search-box">
+							<input
+								type="text"
+								id="searchInput"
+								placeholder="Busque por título ou autor..."
+							/>
+							<iconify-icon icon="akar-icons:search"></iconify-icon>
+						</div>
+
+						<p class="hint mobile">Arraste para mais informações</p>
+						<div class="centerTable">
+							<div class="wrapperTable">
+								<div class="table" id="tableTcc">
+									<div class="header">
+										<h3 class="col-titulo">
+											Título do Trabalho
+										</h3>
+										<h3 class="col-autor">Autor</h3>
+										<h3 class="col-link">Arquivo</h3>
+									</div>
+									<div class="content" id="tccContent"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<footer>
+			<div class="footerWave">
+				<div class="left"></div>
+				<a class="footerLogo" href="#top">
+					<div class="logo">
+						<img
+							src="../assets/footerLogo.png"
+							alt="Logo do curso de Ciência da Computação"
+						/>
+					</div>
+				</a>
+				<div class="right"></div>
+			</div>
+			<div class="MaxWidthWrapper">
+				<div class="footerWrapper">
+					<div class="footerFloat">
+						<div class="footerContent">
+							<h1>Contato</h1>
+							<ul>
+								<a
+									target="_blank"
+									href="https://goo.gl/maps/FKcmwBJ76WYrLQSj8"
+								>
+									<iconify-icon
+										icon="heroicons:map-pin-solid"
+									></iconify-icon>
+									<span>
+										UESC, Pavilhão do DCET, 1º andar
+									</span>
+								</a>
+								<a target="_blank" href="mailto:colcic@uesc.br">
+									<iconify-icon
+										icon="bi:envelope-fill"
+									></iconify-icon>
+									<span> colcic@uesc.br </span>
+								</a>
+								<a target="_blank" href="tel:7336805110">
+									<iconify-icon
+										icon="ant-design:phone-filled"
+									></iconify-icon>
+									<span> (73) 3680-5110 </span>
+								</a>
+								<a
+									target="_blank"
+									href="https://www.facebook.com/groups/colcic/"
+								>
+									<iconify-icon
+										icon="akar-icons:facebook-fill"
+									></iconify-icon>
+									<span> Facebook </span>
+								</a>
+							</ul>
+						</div>
+						<div class="footerContent">
+							<h1>Endereço</h1>
+							<a target="_blank" href="#" class="linkEndereco">
+								<p>
+									UNIVERSIDADE ESTADUAL DE SANTA CRUZ - UESC
+								</p>
+								<p>Campus Soane Nazaré de Andrade</p>
+								<p>Rodovia Jorge Amado, Km 16, Salobrinho</p>
+								<p>CEP 45662-900. Ilhéus-Bahia</p>
+							</a>
+						</div>
+					</div>
+
+					<div class="footerCopy">
+						<p>© 2022 - Todos os direitos reservados | COLCIC</p>
+						<a
+							href="../desenvolvedores.html"
+							style="text-decoration: underline; color: rgb(90, 235, 115)"
+						>
+							Conheça nossos desenvolvedores
+						</a>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+		<script src="../js/header.js"></script>
+		<script src="../js/tcc.js"></script>
+		<script src="../js/goToTop.js"></script>
+	</body>
+</html>
