@@ -1,226 +1,227 @@
 header .wrapper .wrapperContent {
-	box-sizing: border-box;
-	width: 100%;
+    box-sizing: border-box;
+    width: 100%;
 }
 
 .mainWrapper {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	gap: 40px;
-	width: 100%;
-	min-width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    width: 100%;
+    min-width: 0;
 }
 
 .mainWrapper .mainContentPhoto {
-	display: none;
-	max-width: 30%;
-	width: auto;
+    display: none;
+    max-width: 30%;
+    width: auto;
 }
 
 .mainWrapper .mainContentPhoto img {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .mainContent {
-	display: flex;
-	flex-direction: column;
-	gap: 20px;
-	width: 100%;
-	min-width: 0;
-	max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
 }
 
 .mainContent h1 {
-	color: #fff;
-	font-size: 2em;
-	line-height: 1.15;
+    color: #fff;
+    font-size: 2em;
+    line-height: 1.15;
 }
 
 .mainContent h1 b {
-	color: var(--secondary-color);
+    color: var(--secondary-color);
 }
 
 .mainContent p {
-	color: #fff;
-	line-height: 1.6;
-	max-width: 100%;
+    color: #fff;
+    line-height: 1.6;
+    max-width: 100%;
 }
 
 .composicao {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	gap: 24px;
-	width: 100%;
-	min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    width: 100%;
+    min-width: 0;
 }
 
 .search-box {
-	position: relative;
-	display: flex;
-	align-items: center;
-	width: 100%;
-	max-width: 1000px;
-	min-width: 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px; /* Aumentado de 1000px para 1200px */
+    min-width: 0;
 }
 
 .search-box input {
-	box-sizing: border-box;
-	width: 100%;
-	padding: 14px 52px 14px 20px;
-	border: 1px solid #ddd;
-	border-radius: 8px;
-	background: #fff;
-	font-size: 1rem;
-	outline: none;
-	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
-	transition: border 200ms ease-out, box-shadow 200ms ease-out;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 14px 52px 14px 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #fff;
+    font-size: 1rem;
+    outline: none;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+    transition: border 200ms ease-out, box-shadow 200ms ease-out;
 }
 
 .search-box input:focus {
-	border-color: var(--primary-color);
-	box-shadow: 0 5px 16px rgba(69, 97, 189, 0.18);
+    border-color: var(--primary-color);
+    box-shadow: 0 5px 16px rgba(69, 97, 189, 0.18);
 }
 
 .search-box iconify-icon {
-	position: absolute;
-	right: 18px;
-	color: var(--primary-color);
-	font-size: 1.2rem;
-	pointer-events: none;
+    position: absolute;
+    right: 18px;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    pointer-events: none;
 }
 
 .centerTable {
-	display: flex;
-	justify-content: center;
-	width: 100%;
-	min-width: 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    min-width: 0;
 }
 
 .wrapperTable {
-	box-sizing: border-box;
-	width: 100%;
-	max-width: 1000px;
-	min-width: 0;
-	overflow-x: auto;
-	border: 1px solid #ddd;
-	border-radius: 8px;
-	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 1200px; /* Aumentado de 1000px para 1200px */
+    min-width: 0;
+    overflow-x: auto;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .table {
-	display: flex;
-	flex-direction: column;
-	width: 100%;
-	min-width: 760px;
-	background: #fff;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-width: 950px; /* Aumentado de 760px para 950px para dar mais respiro às colunas */
+    background: #fff;
 }
-
+/* Força Header e Linhas a se comportarem de forma idêntica */
 .table .header,
 .table .content .row {
-	display: flex;
-	align-items: stretch;
-	width: 100%;
+    display: flex !important;
+    align-items: stretch !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
 .table .header {
-	background: var(--primary-color);
-	color: #fff;
+    background: var(--primary-color);
+    color: #fff;
 }
 
-.col-titulo {
-	flex: 2.5;
-}
+/* --- PROPORÇÕES DAS COLUNAS (TODAS COM !IMPORTANT) --- */
+.col-titulo   { flex: 3.8 !important; }
+.col-autor    { flex: 1.3 !important; }
+.col-turma    { flex: 0.6 !important; justify-content: center !important; }
+.col-semestre { flex: 0.8 !important; justify-content: center !important; }
+.col-link     { flex: 0.6 !important; justify-content: center !important; border-right: none !important; }
 
-.col-autor {
-	flex: 1.2;
-}
-
-.col-link {
-	flex: 0.6;
-	justify-content: center;
-	border-right: none !important;
-}
-
+/* Estilo geral das células (h3 e span) */
 .table .header h3,
 .table .content .row > span {
-	display: flex;
-	align-items: center;
-	box-sizing: border-box;
-	padding: 18px 25px;
-	border-right: 1px solid rgba(0, 0, 0, 0.1);
-	font-size: 0.95rem;
-	line-height: 1.4;
-	margin: 0;
+    display: flex !important;
+    align-items: center !important;
+    box-sizing: border-box !important;
+    padding: 18px 25px !important;
+    border-right: 1px solid rgba(0, 0, 0, 0.1) !important;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    margin: 0 !important;
+    word-break: break-word;
 }
 
+/* Ajuste específico para o texto e as bordas do cabeçalho */
 .table .header h3 {
-	color: #fff;
-	font-size: 1rem;
-	font-weight: 600;
-	text-transform: uppercase;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-right: 1px solid rgba(255, 255, 255, 0.2) !important; /* Borda branca transparente no azul */
 }
 
+/* Regras de hover e background das linhas */
 .table .content .row {
-	border-bottom: 1px solid #eee;
-	transition: background 0.2s ease;
+    border-bottom: 1px solid #eee;
+    transition: background 0.2s ease;
 }
 
 .table .content .row:last-child {
-	border-bottom: none;
+    border-bottom: none;
 }
 
 .table .content .row:nth-child(even) {
-	background: #fafafa;
+    background: #fafafa;
 }
 
 .table .content .row:hover {
-	background: #f1f5f9;
+    background: #f1f5f9;
 }
 
 .table .content .row.empty {
-	justify-content: center;
-	padding: 20px;
-	box-sizing: border-box;
-	color: var(--text-color);
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+    color: var(--text-color);
 }
 
 .col-link a {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap: 8px;
-	color: var(--primary-color);
-	font-weight: bold;
-	text-decoration: none;
-	transition: color 200ms ease-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: var(--primary-color);
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 200ms ease-out;
 }
 
 .col-link a:hover {
-	color: var(--primary-color-hover);
+    color: var(--primary-color-hover, #00366b);
 }
 
+/* Responsividade */
 @media (min-width: 860px) {
-	.mainWrapper .mainContentPhoto {
-		display: block;
-	}
+    .mainWrapper .mainContentPhoto {
+        display: block;
+    }
 
-	.mainContent {
-		max-width: 50%;
-	}
+    .mainContent {
+        max-width: 50%;
+    }
 }
 
 @media (max-width: 520px) {
-	.table {
-		min-width: 680px;
-	}
+    .table {
+        min-width: 680px;
+    }
 
-	.table .header h3,
-	.table .content .row > span {
-		padding: 14px 18px;
-	}
+    .table .header h3,
+    .table .content .row > span {
+        padding: 14px 18px !important;
+    }
 }
