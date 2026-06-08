@@ -1,4 +1,4 @@
-const API_URL = "https://script.google.com/macros/s/AKfycbydtY3R_CwBZfD05H1_TD_hg3cNVTzuOOvKX4kAzdwk1Ioi0Fd3Fit6vcHR5qzj18ZCDg/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbzOlxKUMDcfq0mBHwIcC_6B47ieVfoun3alQnUJt9PX9W_StgFyh8lCajETpPv8cds1/exec";
 
 let tccs = []; 
 
