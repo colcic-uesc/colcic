@@ -1,88 +1,104 @@
-const tccs = [
-	{
-		titulo: "Aplicação de Redes Neurais na Predição de Colheita",
-		autor: "João Silva Santos",
-		link: "https://drive.google.com/link1",
-	},
-	{
-		titulo: "Análise Comparativa entre React Native e Flutter",
-		autor: "Maria Oliveira Souza",
-		link: "https://drive.google.com/link2",
-	},
-	{
-		titulo: "Segurança em Dispositivos IoT utilizando Blockchain",
-		autor: "Carlos Augusto Ferreira",
-		link: "https://drive.google.com/link3",
-	},
-];
+const API_URL = "https://script.google.com/macros/s/AKfycbydtY3R_CwBZfD05H1_TD_hg3cNVTzuOOvKX4kAzdwk1Ioi0Fd3Fit6vcHR5qzj18ZCDg/exec";
+
+let tccs = []; 
 
 const tblTccs = document.querySelector("#tccContent");
 const searchInput = document.querySelector("#searchInput");
 
 function normalizarTexto(texto) {
-	return texto
-		.toLowerCase()
-		.normalize("NFD")
-		.replace(/[\u0300-\u036f]/g, "");
+    if (!texto) return "";
+    return String(texto)
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
 }
 
+// Criador de células genérico
 function criarCelula(classe, texto) {
-	const celula = document.createElement("span");
-	celula.classList.add(classe);
-	celula.textContent = texto;
-
-	return celula;
+    const celula = document.createElement("span");
+    celula.classList.add(classe);
+    celula.textContent = texto;
+    return celula;
 }
 
+// Renderiza a tabela no HTML
 function renderTable(lista) {
-	tblTccs.innerHTML = "";
+    tblTccs.innerHTML = "";
 
-	if (lista.length === 0) {
-		const row = document.createElement("div");
-		row.classList.add("row", "empty");
-		row.textContent = "Nenhum trabalho encontrado.";
+    if (lista.length === 0) {
+        const row = document.createElement("div");
+        row.classList.add("row", "empty");
+        row.textContent = "Nenhum trabalho encontrado.";
+        row.style.justifyContent = "center";
+        row.style.padding = "20px";
+        tblTccs.appendChild(row);
+        return;
+    }
 
-		tblTccs.appendChild(row);
-		return;
-	}
+    lista.forEach((tcc) => {
+        const row = document.createElement("div");
+        const linkWrapper = document.createElement("span");
+        const link = document.createElement("a");
+        const icon = document.createElement("iconify-icon");
 
-	lista.forEach((tcc) => {
-		const row = document.createElement("div");
-		const linkWrapper = document.createElement("span");
-		const link = document.createElement("a");
-		const icon = document.createElement("iconify-icon");
+        row.classList.add("row");
+        linkWrapper.classList.add("col-link");
 
-		row.classList.add("row");
-		linkWrapper.classList.add("col-link");
+        link.href = tcc.link;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.textContent = "Abrir";
 
-		link.href = tcc.link;
-		link.target = "_blank";
-		link.rel = "noopener noreferrer";
-		link.textContent = "Abrir";
+        icon.setAttribute("icon", "akar-icons:link-chain");
+        link.prepend(icon);
 
-		icon.setAttribute("icon", "akar-icons:link-chain");
-		link.prepend(icon);
+        linkWrapper.appendChild(link);
+        
+        // Adicionando as colunas na ordem correta
+        row.appendChild(criarCelula("col-titulo", tcc.titulo));
+        row.appendChild(criarCelula("col-autor", tcc.autor));
+        row.appendChild(criarCelula("col-turma", tcc.turma));       // Nova coluna
+        row.appendChild(criarCelula("col-semestre", tcc.semestre)); // Nova coluna
+        row.appendChild(linkWrapper);
 
-		linkWrapper.appendChild(link);
-		row.appendChild(criarCelula("col-titulo", tcc.titulo));
-		row.appendChild(criarCelula("col-autor", tcc.autor));
-		row.appendChild(linkWrapper);
-
-		tblTccs.appendChild(row);
-	});
+        tblTccs.appendChild(row);
+    });
 }
 
-renderTable(tccs);
+// Função para buscar os dados da Planilha
+async function carregarTccs() {
+    try {
+        tblTccs.innerHTML = "<div class='row' style='justify-content:center; padding:20px;'>Carregando trabalhos...</div>";
+        
+        const resposta = await fetch(API_URL);
+        const dados = await resposta.json();
+        
+        tccs = dados; // Salva os dados globalmente
+        renderTable(tccs); // Renderiza a tabela com os dados reais
+    } catch (erro) {
+        console.error("Erro ao carregar os dados:", erro);
+        tblTccs.innerHTML = "<div class='row' style='justify-content:center; padding:20px; color: red;'>Erro ao carregar os TCCs. Tente novamente mais tarde.</div>";
+    }
+}
 
+// Inicia a busca assim que o arquivo carregar
+carregarTccs();
+
+// Filtro de busca aprimorado (agora busca por turma e semestre também)
 searchInput.addEventListener("input", (event) => {
-	const termoBusca = normalizarTexto(event.target.value);
+    const termoBusca = normalizarTexto(event.target.value);
 
-	const listaFiltrada = tccs.filter((tcc) => {
-		const titulo = normalizarTexto(tcc.titulo);
-		const autor = normalizarTexto(tcc.autor);
+    const listaFiltrada = tccs.filter((tcc) => {
+        const titulo = normalizarTexto(tcc.titulo);
+        const autor = normalizarTexto(tcc.autor);
+        const turma = normalizarTexto(tcc.turma);
+        const semestre = normalizarTexto(tcc.semestre);
 
-		return titulo.includes(termoBusca) || autor.includes(termoBusca);
-	});
+        return titulo.includes(termoBusca) || 
+               autor.includes(termoBusca) ||
+               turma.includes(termoBusca) ||
+               semestre.includes(termoBusca);
+    });
 
-	renderTable(listaFiltrada);
+    renderTable(listaFiltrada);
 });
